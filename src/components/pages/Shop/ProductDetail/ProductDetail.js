@@ -1,28 +1,18 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import products from "../Data/ProductDatas";
-
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  StyleSheet,
-  Button,
-  Dimensions,
-} from "react-native";
+import { View, Text, ScrollView, Image, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import productDetail from "../Data/ProductDetailData";
-import ProductSugess from "./ProductSugess";
-const ProductDetail = () => {
-  const windowWidth = Dimensions.get("window").width;
-
+import ProductSuggest from "./ProductSuggest";
+import CarouselData from "../Data/CaroselData";
+const ProductDetail = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         {productDetail.map((productDetail) => (
           <View key={productDetail.id} style={[styles.productContainer]}>
-            <Image source={productDetail.image} style={styles.image} />
+            {/* <Image source={productDetail.image} style={styles.image} /> */}
+            <CarouselData />
             <Text
               onPress={() => navigation.navigate("ProductDetail")}
               style={styles.name}
@@ -33,21 +23,11 @@ const ProductDetail = () => {
               Tình trạng: {productDetail.stattus}
             </Text>
             <Text style={styles.price}>{productDetail.price} VND</Text>
-            <TouchableOpacity
-              style={styles.buttonBuy}
-              onPress={() => {
-                // Handle button press
-              }}
-            >
+            <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
               <Text style={styles.buttonText}>Mua Ngay</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.buttonAddCart}
-              onPress={() => {
-                // Handle button press
-              }}
-            >
+            <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
               <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
             </TouchableOpacity>
             <View style={styles.ship}>
@@ -73,10 +53,18 @@ const ProductDetail = () => {
             </View>
             <Text style={styles.detailTitle}> Mô tả sản phẩm</Text>
             <Text style={styles.description}>{productDetail.description}</Text>
-            <Text style={styles.detailTitle}> Chim tương tự</Text>
-            <ProductSugess />
+            <Text
+              onPress={() => navigation.navigate("Product")}
+              style={styles.detailTitle}
+            >
+              {" "}
+              Chim tương tự
+            </Text>
           </View>
         ))}
+        <View>
+          <ProductSuggest navigation={navigation} />
+        </View>
       </View>
     </ScrollView>
   );
@@ -84,17 +72,15 @@ const ProductDetail = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     padding: 10,
     backgroundColor: "#FCF8EE",
-    height: 1280,
   },
   productContainer: {
     marginBottom: 20,
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 500,
     marginBottom: 10,
   },
   name: {
@@ -152,7 +138,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     height: 30,
     color: "#F9A529",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   description: {
     fontSize: 18,
