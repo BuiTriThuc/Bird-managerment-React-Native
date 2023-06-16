@@ -2,7 +2,7 @@ const productDetail = [
   {
     id: 1,
     image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp2Hod8Ai5katLRJRAkPapbIt-EMqLdNwEMw&usqp=CAU",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxo-7jOhTycvc7Wc6NRjyP_USZRgyyLVLsVQ&usqp=CAU",
     },
     name: "Chim Ưng",
     stattus: "Còn Hàng",
