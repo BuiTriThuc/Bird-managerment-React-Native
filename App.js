@@ -12,6 +12,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      {/* asdasd
+      asdas  */}
       <Stack.Navigator>
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Product" component={Product} />
