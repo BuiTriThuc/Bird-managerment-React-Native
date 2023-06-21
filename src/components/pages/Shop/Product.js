@@ -1,16 +1,3 @@
-// <<<<<<< HEAD
-// import { View, Text } from "react-native";
-// import React from "react";
-
-// const Product = () => {
-//   return (
-//     <View>
-//       <Text>Product</Text>
-//     </View>
-//   );
-// };
-
-// =======
 import React from "react";
 import {
   View,
@@ -64,19 +51,11 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 3,
-    backgroundColor: "white",
   },
   image: {
     width: "100%",
     height: 200,
     marginBottom: 10,
-    borderRadius: 5,
   },
   name: {
     fontSize: 24,
@@ -90,6 +69,5 @@ const styles = StyleSheet.create({
     color: "red",
   },
 });
-
 
 export default Product;
