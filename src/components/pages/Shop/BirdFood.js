@@ -1,16 +1,3 @@
-// <<<<<<< HEAD
-// import { View, Text } from "react-native";
-// import React from "react";
-
-// const Product = () => {
-//   return (
-//     <View>
-//       <Text>Product</Text>
-//     </View>
-//   );
-// };
-
-// =======
 import React from "react";
 import {
   View,
@@ -20,7 +7,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import products from "../Shop/Data/ProductDatas";
+import birdFoods from "../Shop/Data/BirdFoodData";
 
 const Product = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
@@ -28,19 +15,21 @@ const Product = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        {products.map((product) => (
+        {birdFoods.map((birdFood) => (
           <View
-            key={product.id}
+            key={birdFood.id}
             style={[styles.productContainer, { width: windowWidth / 2 - 20 }]}
           >
-            <Image source={product.image} style={styles.image} />
+            <Image source={birdFood.image} style={styles.image} />
             <Text
-              onPress={() => navigation.navigate("ProductDetail", { product })}
+              onPress={() =>
+                navigation.navigate("BirdFoodDetail", { birdFood })
+              }
               style={styles.name}
             >
-              {product.name}{" "}
+              {birdFood.name}{" "}
             </Text>
-            <Text style={styles.price}>{product.price} VND</Text>
+            <Text style={styles.price}>{birdFood.price} VND</Text>
           </View>
         ))}
       </View>
@@ -64,19 +53,11 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 3,
-    backgroundColor: "white",
   },
   image: {
     width: "100%",
     height: 200,
     marginBottom: 10,
-    borderRadius: 5,
   },
   name: {
     fontSize: 24,
@@ -90,6 +71,5 @@ const styles = StyleSheet.create({
     color: "red",
   },
 });
-
 
 export default Product;
