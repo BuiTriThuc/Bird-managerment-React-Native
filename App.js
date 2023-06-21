@@ -13,6 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* ádasdsad ádasdsadádsa */}
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Product" component={Product} />
         <Stack.Screen name="ProductDetail" component={ProductDetail} />
