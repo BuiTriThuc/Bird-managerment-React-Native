@@ -1,14 +1,21 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import React from "react";
+import { enableScreens } from "react-native-screens";
+import { Entypo } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignIn from "./src/components/pages/Account/SignIn";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./src/components/pages/Home";
+import Contact from "./src/components/pages/Contact";
+import News from "./src/components/pages/News";
 import Product from "./src/components/pages/Shop/Product";
-import BirdFood from "./src/components/pages/Shop/BirdFood";
-import ProductDetail from "./src/components/pages/Shop/ProductDetail/ProductDetail";
-import BirdFoodDetail from "./src/components/pages/Shop/BirdFoodDetail/BirdFoodDetail";
+import SignIn from "./src/components/pages/Account/SignIn";
 
-const Stack = createNativeStackNavigator();
+Entypo.loadFont();
+
+enableScreens();
+const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -20,15 +27,7 @@ export default function App() {
         <Stack.Screen name="BirdFood" component={BirdFood} />
         <Stack.Screen name="BirdFoodDetail" component={BirdFoodDetail} />
       </Stack.Navigator>
+
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
