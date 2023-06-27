@@ -12,6 +12,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* thức fix test */}
         {/* <Stack.Screen name="SignIn" component={SignIn} /> */}
         <Stack.Screen name="Bird" component={BirdScreen} />
         <Stack.Screen name="BirdDetail" component={BirdDetail} />
