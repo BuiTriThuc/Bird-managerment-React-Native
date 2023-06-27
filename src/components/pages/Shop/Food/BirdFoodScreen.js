@@ -1,46 +1,87 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
   ScrollView,
+  StyleSheet,
+  View,
+  Image,
+  Text,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
-import birdFoods from "../Shop/Data/BirdFoodData";
+import FoodData from "../Data/FoodData";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 
-const Product = ({ navigation }) => {
+export default function BirdFoodScreen({ navigation }) {
   const windowWidth = Dimensions.get("window").width;
+  const [listFavourite, setListFavourite] = useState([]);
+  const [data, setData] = useState([]);
+  const isFocused = useIsFocused();
+
+  const handlePress = (product) => {
+    navigation.navigate("FoodDetail", { product });
+  };
+
+  const getFavouriteList = async () => {
+    try {
+      // Get favorites from AsyncStorage
+      const favorites = await AsyncStorage.getItem("favorites");
+      if (favorites) {
+        // Parse the favorites from AsyncStorage
+        const parsedFavorites = JSON.parse(favorites);
+
+        // Update the listFavourite state
+        setListFavourite(parsedFavorites);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getFavouriteList();
+  }, []);
+
+  useEffect(() => {
+    getFavouriteList();
+  }, [isFocused]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const updatedData = () => {
+        const updatedData = FoodData.map((item) => ({
+          ...item,
+          favorite: listFavourite.some((fav) => fav.id === item.id),
+        }));
+        setData(updatedData);
+      };
+
+      updatedData();
+    }, [listFavourite])
+  );
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        {birdFoods.map((birdFood) => (
-          <View
-            key={birdFood.id}
+        {data.map((product) => (
+          <TouchableOpacity
+            key={product.id}
             style={[styles.productContainer, { width: windowWidth / 2 - 20 }]}
+            onPress={() => handlePress(product)}
+            activeOpacity={0.7}
           >
-            <Image source={birdFood.image} style={styles.image} />
-            <Text
-              onPress={() =>
-                navigation.navigate("BirdFoodDetail", { birdFood })
-              }
-              style={styles.name}
-            >
-              {birdFood.name}{" "}
-            </Text>
-            <Text style={styles.price}>{birdFood.price} VND</Text>
-          </View>
+            <Image source={product.image} style={styles.image} />
+            <Text style={styles.name}>{product.name}</Text>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 1280,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
@@ -49,7 +90,7 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     marginBottom: 20,
-    backgroundColor: "#ffff",
+    backgroundColor: "#ECEEF5",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -61,23 +102,16 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "white",
   },
+
   image: {
+    borderRadius: 5,
     width: "100%",
     height: 200,
     marginBottom: 10,
-    borderRadius: 5,
   },
   name: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
   },
-
-  price: {
-    fontSize: 18,
-    marginBottom: 10,
-    color: "red",
-  },
 });
-
-export default Product;

@@ -6,6 +6,8 @@ import SignIn from "./src/components/pages/Account/SignIn";
 
 import BirdScreen from "./src/components/pages/Shop/Bird/BirdScreen";
 import BirdDetail from "./src/components/pages/Shop/Bird/BirdDetail";
+import BirdFoodScreen from "./src/components/pages/Shop/Food/BirdFoodScreen";
+import FoodDetail from "./src/components/pages/Shop/Food/FoodDetail";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -16,6 +18,8 @@ export default function App() {
         {/* <Stack.Screen name="SignIn" component={SignIn} /> */}
         <Stack.Screen name="Bird" component={BirdScreen} />
         <Stack.Screen name="BirdDetail" component={BirdDetail} />
+        <Stack.Screen name="Food" component={BirdFoodScreen} />
+        <Stack.Screen name="FoodDetail" component={FoodDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
