@@ -28,7 +28,7 @@ const BirdDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
-          <Image source={product.imageThuc} />
+          <Image style={styles.imgdes} source={product.imageThuc} />
 
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
@@ -152,6 +152,12 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     fontSize: 18,
     marginBottom: 20,
+  },
+  imgdes: {
+    width: "100%",
+    height: 200,
+    marginBottom: 10,
+    borderRadius: 10,
   },
 });
 
