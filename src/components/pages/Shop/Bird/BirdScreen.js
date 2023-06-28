@@ -11,6 +11,8 @@ import {
 import BirdData from "../Data/BirdData";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../../config/firebase";
 
 export default function BirdScreen({ navigation }) {
   const windowWidth = Dimensions.get("window").width;
@@ -20,6 +22,10 @@ export default function BirdScreen({ navigation }) {
 
   const handlePress = (product) => {
     navigation.navigate("BirdDetail", { product });
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
   };
 
   const getFavouriteList = async () => {
@@ -75,6 +81,13 @@ export default function BirdScreen({ navigation }) {
           </TouchableOpacity>
         ))}
       </View>
+
+      <TouchableOpacity
+        onPress={handleLogout}
+        className="p-4 bg-red-500 rounded-full"
+      >
+        <Text className="text-lg text-white font-bold text-center">Logout</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
