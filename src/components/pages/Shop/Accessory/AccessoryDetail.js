@@ -8,11 +8,12 @@ import {
   StyleSheet,
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
-import FoodDetailSuggest from "./FoodDetailSuggest";
-import FoodCarosel from "./FoodCarosel";
+// import FoodDetailSuggest from "./FoodDetailSuggest";
 import CountButton from "../../Shop/CountButton";
+import AccessoryCarosel from "./AccessoryCarosel";
+import AccessorySuggest from "./AccessorySuggest";
 
-const FoodDetail = ({ navigation, route }) => {
+const AccessoryDetail = ({ navigation, route }) => {
   let { product } = route.params;
 
   const clearAsyncStorage = async () => {
@@ -30,7 +31,7 @@ const FoodDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
-          <FoodCarosel />
+          <AccessoryCarosel />
           <Image source={product.imageThuc} />
 
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
@@ -70,7 +71,7 @@ const FoodDetail = ({ navigation, route }) => {
           <Text style={styles.detailTitle}> Mô tả sản phẩm</Text>
           <Text style={styles.description}>{product.description}</Text>
           <Text
-            onPress={() => navigation.navigate("Food")}
+            onPress={() => navigation.navigate("Accessory")}
             style={styles.detailTitle}
           >
             {" "}
@@ -79,7 +80,7 @@ const FoodDetail = ({ navigation, route }) => {
         </View>
 
         <View>
-          <FoodDetailSuggest navigation={navigation} />
+          <AccessorySuggest navigation={navigation} />
         </View>
       </View>
     </ScrollView>
@@ -168,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FoodDetail;
+export default AccessoryDetail;

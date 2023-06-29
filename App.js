@@ -11,6 +11,8 @@ import useAuth from "./src/components/hooks/useAuth";
 import SignUp from "./src/components/pages/Account/SignUp";
 import "./src/ignoreWarnings";
 import Booking from "./src/components/layout/Booking";
+import AccessoryScreen from "./src/components/pages/Shop/Accessory/AccessoryScreen";
+import AccessoryDetail from "./src/components/pages/Shop/Accessory/AccessoryDetail";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -25,10 +27,12 @@ export default function App() {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Bird" component={BirdScreen} />
-          <Stack.Screen name="BirdDetail" component={BirdDetail} />
+          <Stack.Screen name="Accessory" component={AccessoryScreen} />
+          <Stack.Screen name="AccessoryDetail" component={AccessoryDetail} />
           <Stack.Screen name="Food" component={BirdFoodScreen} />
           <Stack.Screen name="FoodDetail" component={FoodDetail} />
+          <Stack.Screen name="Bird" component={BirdScreen} />
+          <Stack.Screen name="BirdDetail" component={BirdDetail} />
           <Stack.Screen name="Booking" component={Booking} />
         </Stack.Navigator>
       </NavigationContainer>
