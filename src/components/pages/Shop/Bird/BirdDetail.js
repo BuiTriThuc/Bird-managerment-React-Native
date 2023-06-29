@@ -76,7 +76,7 @@ const BirdDetail = ({ navigation, route }) => {
             style={styles.detailTitle}
           >
             {" "}
-            Chim tương tự
+            Sản phẩm liên quan
           </Text>
         </View>
 
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonText: {
+    marginTop: 5,
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",

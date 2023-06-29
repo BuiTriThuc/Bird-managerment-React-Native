@@ -10,6 +10,7 @@ import FoodDetail from "./src/components/pages/Shop/Food/FoodDetail";
 import useAuth from "./src/components/hooks/useAuth";
 import SignUp from "./src/components/pages/Account/SignUp";
 import "./src/ignoreWarnings";
+import Booking from "./src/components/layout/Booking";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
             headerShown: false,
           }}
         >
+          <Stack.Screen name="Booking" component={Booking} />
           <Stack.Screen name="Bird" component={BirdScreen} />
           <Stack.Screen name="BirdDetail" component={BirdDetail} />
           <Stack.Screen name="Food" component={BirdFoodScreen} />
