@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import BirdDetailSuggest from "./BirdDetailSuggest";
-import CountButton from "./CountButton";
+import CountButton from "../../Shop/CountButton";
+import BirdCarousel from "./BirdCarosel";
 
 const BirdDetail = ({ navigation, route }) => {
   let { product } = route.params;
@@ -29,20 +30,24 @@ const BirdDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
-          <Image style={styles.imgdes} source={product.imageThuc} />
-
+          <BirdCarousel />
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
           <View style={styles.CountButton}>
-            <Text>Số luợng</Text>
+            <Text style={{ fontSize: 15 }}>Số luợng:</Text>
             <CountButton style={styles.Count} />
           </View>
           <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
-            <Text style={styles.buttonText}>Mua Ngay</Text>
+            <Text style={styles.buttonText}>
+              <FontAwesome name="opencart" size={22} color="white" /> Mua Ngay
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
-            <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
+            <Text style={styles.buttonText}>
+              <FontAwesome name="cart-plus" size={22} color="white" /> Thêm vào
+              giỏ hàng
+            </Text>
           </TouchableOpacity>
           <View style={styles.ship}>
             <FontAwesome
@@ -52,7 +57,7 @@ const BirdDetail = ({ navigation, route }) => {
               marginRight={7}
             />
             <Text>
-              Vận chuyển toàn quốc, miễn phí vận chuyển trong vòng bán kính 15km
+              Vận chuyển toàn quốc: miễn phí vận chuyển trong vòng bán kính 15km
             </Text>
           </View>
           <View style={styles.backItem}>

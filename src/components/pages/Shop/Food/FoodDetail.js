@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import FoodDetailSuggest from "./FoodDetailSuggest";
+import FoodCarosel from "./FoodCarosel";
 
 const FoodDetail = ({ navigation, route }) => {
   let { product } = route.params;
@@ -28,6 +29,7 @@ const FoodDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
+          <FoodCarosel />
           <Image source={product.imageThuc} />
 
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
