@@ -38,23 +38,28 @@ export default function SignUp() {
   };
 
   return (
-    <ScrollView className="w-full">
+    <ScrollView style={{ backgroundColor: "#FCF8EE" }} className="w-full">
       <StatusBar animated={true} backgroundColor="#474747" />
       <View className="flex-1 w-full h-44 mb-8">
         <Image
-          source={require("../../../img/banner.png")}
+          source={require("../../../img/bannerSignUp.jpg")}
           className="absolute h-full w-full top-0 left-0 object-cover"
         />
 
         <View className="relative z-[1] self-center text-center mt-20">
-          <Text className="text-2xl h-full text-orange-600 font-bold uppercase">
+          {/* <Text className="text-2xl h-full text-orange-600 font-bold uppercase">
             Đăng ký
-          </Text>
+          </Text> */}
         </View>
       </View>
 
-      <Text className="uppercase text-xl font-light m-4">Đăng ký</Text>
-
+      <Text className="uppercase text-xl font-extrabold text-orange-500 m-4">
+        Đăng ký
+      </Text>
+      <Text className="m-4 text-base mr-10">
+        Nếu bạn chưa tài khoản, xin vui lòng đăng ký để trở thành thành viên
+        cùng chúng tôi
+      </Text>
       <View>
         <Text className="m-4 text-base font-bold">
           Email <Text className="text-red-700">*</Text>

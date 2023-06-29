@@ -37,22 +37,20 @@ export default function SignIn() {
   };
 
   return (
-    <ScrollView className="w-full">
+    <ScrollView style={{ backgroundColor: "#FCF8EE" }} className="w-full">
       <StatusBar animated={true} backgroundColor="#474747" />
       <View className="flex-1 w-full h-44 mb-8">
         <Image
-          source={require("../../../img/banner.png")}
+          source={require("../../../img/banner.jpg")}
           className="absolute h-full w-full top-0 left-0 object-cover"
         />
 
-        <View className="relative z-[1] self-center text-center mt-20">
-          <Text className="text-2xl h-full text-orange-600 font-bold uppercase">
-            Đăng nhập
-          </Text>
-        </View>
+        <View className="relative z-[1] self-center text-center mt-20"></View>
       </View>
 
-      <Text className="uppercase text-xl font-light m-4">Đăng nhập</Text>
+      <Text className="uppercase text-xl font-extrabold text-orange-500 m-4">
+        Đăng nhập
+      </Text>
 
       <Text className="m-4 text-base mr-10">
         Nếu bạn có một tài khoản, xin vui lòng đăng nhập
