@@ -25,11 +25,11 @@ export default function App() {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Booking" component={Booking} />
           <Stack.Screen name="Bird" component={BirdScreen} />
           <Stack.Screen name="BirdDetail" component={BirdDetail} />
           <Stack.Screen name="Food" component={BirdFoodScreen} />
           <Stack.Screen name="FoodDetail" component={FoodDetail} />
+          <Stack.Screen name="Booking" component={Booking} />
         </Stack.Navigator>
       </NavigationContainer>
     );
