@@ -9,6 +9,7 @@ import BirdFoodScreen from "./src/components/pages/Shop/Food/BirdFoodScreen";
 import FoodDetail from "./src/components/pages/Shop/Food/FoodDetail";
 import useAuth from "./src/components/hooks/useAuth";
 import SignUp from "./src/components/pages/Account/SignUp";
+import "./src/ignoreWarnings";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -23,7 +24,6 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* thức fix test */}
           <Stack.Screen name="Bird" component={BirdScreen} />
           <Stack.Screen name="BirdDetail" component={BirdDetail} />
           <Stack.Screen name="Food" component={BirdFoodScreen} />
@@ -40,7 +40,6 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* thức fix test */}
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome5";
 
 // import Colors from "../../constants/Colors";
 
@@ -21,12 +22,12 @@ const CountButton = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.buttonLeft} onPress={minusValue}>
-        <Text>-</Text>
+        <FontAwesome name="minus" size={15} color="#F9A529" />
       </TouchableOpacity>
       <Text style={styles.quantity}> {value}</Text>
 
       <TouchableOpacity style={styles.buttonRight} onPress={plusValue}>
-        <Text>+</Text>
+        <FontAwesome name="plus" size={15} color="#F9A529" />
       </TouchableOpacity>
     </View>
   );
@@ -37,11 +38,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderRadius: 10,
-    height: 35,
+    borderRadius: 5,
+    height: 37,
     overflow: "hidden",
-    borderColor: "black",
-    margin: 6,
+    margin: 10,
+    borderColor: "#F9A529",
   },
   quantity: {
     paddingHorizontal: 10,
@@ -51,15 +52,15 @@ const styles = StyleSheet.create({
   buttonLeft: {
     alignItems: "center",
     borderRightWidth: 1,
-    borderRightColor: "black",
-    padding: 6,
+    borderRightColor: "#F9A529",
+    padding: 10,
   },
 
   buttonRight: {
     alignItems: "center",
     borderLeftWidth: 1,
-    borderLeftColor: "black",
-    padding: 6,
+    borderLeftColor: "#F9A529",
+    padding: 10,
   },
 });
 
