@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import BirdDetailSuggest from "./BirdDetailSuggest";
+import CountButton from "./CountButton";
 
 const BirdDetail = ({ navigation, route }) => {
   let { product } = route.params;
@@ -32,6 +33,10 @@ const BirdDetail = ({ navigation, route }) => {
 
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
+          <View style={styles.CountButton}>
+            <Text>Số luợng</Text>
+            <CountButton style={styles.Count} />
+          </View>
           <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
             <Text style={styles.buttonText}>Mua Ngay</Text>
           </TouchableOpacity>
@@ -113,6 +118,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
   },
+  CountButton: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  Count: {},
   buttonAddCart: {
     backgroundColor: "#00BCD4",
     paddingVertical: 10,
