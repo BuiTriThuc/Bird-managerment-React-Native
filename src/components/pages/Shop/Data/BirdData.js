@@ -23,7 +23,7 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOwFiVU7mbMYnUhM4OBxKGZobSi4fOsKf4vQ&usqp=CAU",
     },
     description:
-      "Chim khướu là một loài chim có hình dạng nhỏ gọn và phần lớn có màu sắc tươi sáng. Chúng thường có âm thanh hót líu lo, tạo ra những giai điệu đặc trưng.",
+      "Chim Khướu có tên khoa học là Timaliidae, là loài động vật thuộc bộ Sẻ, thường sinh sống chủ yếu tại khu vực nhiệt đới thuộc các nước trong vùng Đông Nam Á, trong đó rất phổ biến tại Việt Nam. Hiện nay vẫn chưa thể rõ được là chúng xuất hiện ở nước ta từ bao giờ.",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR25Z1kYZsf0Pp_MIoUAFlM6t7bcCD4ptJkUw&usqp=CAU",
     },
     description:
-      "Chim chào mào là một loài chim có kích thước nhỏ. Chúng có tiếng hót rất đẹp và phức tạp, thường được sử dụng trong các cuộc thi chào mào.",
+      "Chào mào (Pycnonotus jocosus) là một loài chim thuộc bộ Sẻ phân bố ở châu Á. Nó là một thành viên của họ Chào mào. Nó là một loài động vật ăn quả thường trú được tìm thấy chủ yếu ở châu Á nhiệt đới. Nó đã được đưa bởi con người vào nhiều khu vực nhiệt đới trên thế giới, nơi các quần thể đã tự hình thành. Nó ăn trái cây và côn trùng nhỏ.",
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
     },
     description:
-      "Chim họa mi là một loài chim nhỏ có tiếng hót đặc trưng và êm dịu. Chúng thường được nuôi làm cảnh hoặc để nghe tiếng hót của chúng.",
+      "Chim Họa mi có tên khoa học là Garrulax canorus là một loài chim trong họ Leiothrichidae. Tên gọi Họa mi của loài chim này thể hiện đặc điểm nổi bật của chúng chính là quầng lông sáng màu quanh mắt giống như được vẽ lên vậy.",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaw--LOR5L9L5cWGxSq7Hra9YScchRwJiH2g&usqp=CAU",
     },
     description:
-      "Chim sáo là một loài chim nhỏ có màu sắc đa dạng. Chúng thường có tiếng hót đặc trưng và phức tạp, làm cho chúng trở thành một loài chim cảnh phổ biến.",
+      "Chim Sáo có tên khoa học là Sturnidae có ngoại hình thon dài, kích thước trung bình và khá nổi bật. Giống chim này thường sống thành từng bầy, ưa sống trong môi trường rậm rạp có nhiều cây cối. Tại Việt Nam chim Sáo được yêu thích để nuôi làm cảnh với giọng hót đặc trưng.",
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZWm2rSgeXuXVh6CvuiBFHCICV7C3BpYWqCg&usqp=CAU",
     },
     description:
-      "Chim chòe lửa là một loài chim có màu sắc nổi bật với lông đỏ chói. Chúng thường sinh sống trong các vùng cỏ ngắn và có tiếng hót đặc trưng.",
+      "Chích Chòe Lửa có tên khoa học là Copsychus Malabaricus, giống chim thuộc họ Muscicapidae. Đây là giống chim được giới chơi chim cảnh yêu thích với dáng đẹp và giọng hót hay. Chim Chích Chòe Lửa có vóc dáng gọn và nổi bật với màu lông đỏ gạch cùng lông đuôi dài vô cùng nổi bật.",
   },
   {
     id: 7,
@@ -77,19 +77,19 @@ const BirdData = [
       uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvhzZsCa0HMiJl7vGDc8U88n-AHB1tMEwSCw&usqp=CAU",
     },
     description:
-      "Chim cu gáy là một loài chim có kích thước trung bình và màu sắc đa dạng. Chúng thường có tiếng kêu trầm ấm và là loài chim nuôi phổ biến.",
+      "Chim cu gáy thuộc họ bồ câu, tên khoa học là Stêp- topelia Chinensis, sống hoang dã ở phía Nam Trung Quốc và các nước Đông Nam Á. Ở Việt Nam chim sống ven rừng, các vùng đồng bằng từ Bắc đến Nam, thức ăn chủ yếu là các hạt thưc vật: Lúa, ngô, kê, đậu, hạt cỏ dại.",
   },
   {
     id: 8,
-    name: "Chim họa mi",
-    price: "2.000.000",
+    name: "Chim hút mật",
+    price: "500.000",
     status: "Còn hàng",
 
     image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
+      uri: "https://my-pet.vn/wp-content/uploads/2022/12/chim-hut-mat-1.jpg",
     },
     description:
-      "Chim họa mi là một loài chim nhỏ có tiếng hót đặc trưng và êm dịu. Chúng thường được nuôi làm cảnh hoặc để nghe tiếng hót của chúng.",
+      "Chim Hút mật có tên khoa học là Nectariniidae, thuộc họ chim Sẻ có kích thước rất nhỏ. Đặc điểm nổi bật của giống chim này so với các loại chim khác đó chính là khả năng hút mật. Chim phân bố tại nhiều khu vực trên thế giới, phổ biến nhất tại khu vực Nam châu Á, châu Phi hoặc phía Bắc của Australia.",
   },
 ];
 
