@@ -25,7 +25,7 @@ const BirdDetail = ({ navigation, route }) => {
         <View>
           {/* <CarouselData /> */}
           <Text
-            onPress={() => navigation.navigate("BirdData")}
+            onPress={() => navigation.navigate("BirdDetail")}
             style={styles.name}
           >
             {product.name}{" "}

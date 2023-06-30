@@ -29,70 +29,92 @@ export default function App() {
   const { user } = useAuth();
 
   if (user) {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            let iconColor = focused ? "#000000" : "#bb9457";
+    return (
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              let iconColor = focused ? "#000000" : "#bb9457";
 
-            if (route.name === "Home") {
-              iconName = "home";
-            } else if (route.name === "BirdScreen") {
-              iconName = "shop";
-            } else if (route.name === "Contact") {
-              iconName = "megaphone";
-            } else if (route.name === "News") {
-              iconName = "news";
-            } else if (route.name === "Food") {
-              iconName = null;
-            }
+              if (route.name === "Home") {
+                iconName = "home";
+              } else if (route.name === "BirdScreen") {
+                iconName = "shop";
+              } else if (route.name === "Contact") {
+                iconName = "megaphone";
+              } else if (route.name === "News") {
+                iconName = "news";
+              } else if (route.name === "Food") {
+                iconName = null;
+              }
 
-            return (
-              <Entypo
-                name={iconName}
-                size={size}
-                color={iconColor}
-                style={{ marginTop: 10 }}
-              />
-            );
-          },
-        })}
-      >
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{ tabBarLabel: "" }}
-        />
-        <Tab.Screen name="BirdScreen" options={{ tabBarLabel: "" }}>
-          {() => (
-            <Stack.Navigator>
-              <Stack.Screen
-                name="BirdScreen"
-                component={BirdScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen name="BirdDetail" component={BirdDetail} />
-              <Stack.Screen name="Food" component={BirdFoodScreen} />
-              <Stack.Screen name="FoodDetail" component={FoodDetail} />
-            </Stack.Navigator>
-          )}
-        </Tab.Screen>
-        <Tab.Screen
-          name="Contact"
-          component={Contact}
-          options={{ tabBarLabel: "" }}
-        />
-        <Tab.Screen
-          name="News"
-          component={News}
-          options={{ tabBarLabel: "" }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+              return (
+                <Entypo
+                  name={iconName}
+                  size={size}
+                  color={iconColor}
+                  style={{ marginTop: 10 }}
+                />
+              );
+            },
+          })}
+        >
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{ tabBarLabel: "" }}
+          />
+          <Tab.Screen name="BirdScreen" options={{ tabBarLabel: "" }}>
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Bird"
+                  component={BirdScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="BirdDetail"
+                  component={BirdDetail}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Accessory"
+                  component={AccessoryScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="AccessoryDetail"
+                  component={AccessoryDetail}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Food"
+                  component={BirdFoodScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="FoodDetail"
+                  component={FoodDetail}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
+          <Tab.Screen
+            name="Contact"
+            component={Contact}
+            options={{ tabBarLabel: "" }}
+          />
+          <Tab.Screen
+            name="News"
+            component={News}
+            options={{ tabBarLabel: "" }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
   } else {
     return (
       <NavigationContainer>
@@ -102,8 +124,8 @@ export default function App() {
               let iconName;
               let iconColor = focused ? "#000000" : "#bb9457";
               if (route.name === "SignIn") {
-                iconName = "user";
-              } else if(route.name === "SignUp"){
+                // iconName = "user";
+              } else if (route.name === "SignUp") {
                 iconName = null;
               }
 
