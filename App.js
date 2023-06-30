@@ -13,6 +13,7 @@ import "./src/ignoreWarnings";
 import Booking from "./src/components/layout/Booking";
 import AccessoryScreen from "./src/components/pages/Shop/Accessory/AccessoryScreen";
 import AccessoryDetail from "./src/components/pages/Shop/Accessory/AccessoryDetail";
+import MyCart from "./src/components/screens/MyCart";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
           <Stack.Screen name="Bird" component={BirdScreen} />
           <Stack.Screen name="BirdDetail" component={BirdDetail} />
           <Stack.Screen name="Booking" component={Booking} />
+          <Stack.Screen name="Cart" component={MyCart} />
         </Stack.Navigator>
       </NavigationContainer>
     );
