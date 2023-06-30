@@ -5,7 +5,7 @@ import Carousel from "react-native-snap-carousel";
 const exampleItems = [
   {
     image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT71SBDx9YTNIv_FJQm0Xg1PgDnsdKCJTkMPQ&usqp=CAU",
     },
   },
   {
@@ -30,7 +30,7 @@ const exampleItems = [
   },
 ];
 
-const BirdCarousel = () => {
+const AccessoryCarosel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselItems, setCarouselItems] = useState(exampleItems);
   const ref = useRef(null);
@@ -78,4 +78,4 @@ const BirdCarousel = () => {
   );
 };
 
-export default BirdCarousel;
+export default AccessoryCarosel;

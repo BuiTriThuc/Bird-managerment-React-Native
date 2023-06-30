@@ -65,7 +65,7 @@ const FoodCarosel = () => {
     >
       <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
         <Carousel
-          layout="defaul"
+          layout="default"
           ref={ref}
           data={carouselItems}
           sliderWidth={300}
