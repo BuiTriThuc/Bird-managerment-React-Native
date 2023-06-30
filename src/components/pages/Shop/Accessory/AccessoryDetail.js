@@ -8,7 +8,6 @@ import {
   StyleSheet,
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome5";
-// import FoodDetailSuggest from "./FoodDetailSuggest";
 import CountButton from "../../Shop/CountButton";
 import AccessoryCarosel from "./AccessoryCarosel";
 import AccessorySuggest from "./AccessorySuggest";
@@ -24,7 +23,6 @@ const AccessoryDetail = ({ navigation, route }) => {
     <ScrollView>
       <View style={styles.container}>
         <View>
-          {/* <CarouselData /> */}
           <Text
             onPress={() => navigation.navigate("BirdData")}
             style={styles.name}
@@ -153,7 +151,7 @@ const styles = StyleSheet.create({
   },
   detailTitle: {
     backgroundColor: "white",
-    borderWidth: 0.2, // Border width
+    borderWidth: 1, // Border width
     borderColor: "black", // Border color
     textAlign: "center",
     fontWeight: "bold",
