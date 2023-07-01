@@ -16,18 +16,42 @@ export default function Contact() {
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>LIÊN HỆ</Text>
-        <Image source={require("../../img/Circle-call.jpg")} />
-        <Text>Hỗ trợ tư vấn</Text>
-        <Text>0856597778 - 0856597778</Text>
-        <Image source={require("../../img/Circle-adress.jpg")} />
-        <Text>Văn phòng giao dịch</Text>
-        <Text style={{ textAlign: "center", marginHorizontal: 30 }}>
+        <Image
+          style={styles.imageContact}
+          source={require("../../img/Circle-call.jpg")}
+        />
+        <Text style={{ fontWeight: "bold", fontSize: 25 }}>Hỗ trợ tư vấn</Text>
+        <Text style={{ fontSize: 20, marginBottom: 30 }}>
+          0856597778 - 0856597778
+        </Text>
+        <Image
+          style={styles.imageAdress}
+          source={require("../../img/Circle-adress.jpg")}
+        />
+        <Text style={{ fontWeight: "bold", fontSize: 25 }}>
+          Văn phòng giao dịch
+        </Text>
+        <Text
+          style={{
+            textAlign: "center",
+            marginHorizontal: 30,
+            fontSize: 20,
+            marginBottom: 30,
+          }}
+        >
           Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố
           Hồ Chí Minh
         </Text>
-        <Image source={require("../../img/Circle-mail.jpg")} />
-        <Text>Bộ phận hỗ trợ bán hàng</Text>
-        <Text>Buitrithuc1008@gmail.com</Text>
+        <Image
+          style={styles.imageAdress}
+          source={require("../../img/Circle-mail.jpg")}
+        />
+        <Text style={{ fontWeight: "bold", fontSize: 25 }}>
+          Bộ phận hỗ trợ bán hàng
+        </Text>
+        <Text style={{ fontSize: 20, marginBottom: 30 }}>
+          Buitrithuc1008@gmail.com
+        </Text>
         <Maps />
         <View style={styles.input}>
           <View
@@ -103,35 +127,10 @@ export default function Contact() {
               placeholder="Email:"
             />
           </View>
-          <View
-            style={{
-              backgroundColor: "white",
-              width: 331,
-              height: 40,
-              borderWidth: 0.5,
-              borderRadius: 8,
-              borderColor: "#F9A529",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 20,
-            }}
-          >
-            <FontAwesome
-              name="notes-medical"
-              size={20}
-              color="#F9A529"
-              margin={5}
-            />
-            <TextInput
-              style={{ width: 331, height: 40 }}
-              type="text"
-              placeholder="Chủ đề:"
-            />
-          </View>
+
           <Text
             style={{
-              marginTop: 244,
+              marginTop: 185,
               position: "absolute",
               zIndex: 1,
               fontWeight: 300,
@@ -164,15 +163,13 @@ export default function Contact() {
         </View>
         <TouchableOpacity style={styles.buttonBook} onPress={() => {}}>
           <Text style={styles.buttonTextBook}>
-            <Feather name="send" size={20} color="white" /> Đặt lịch
+            <Feather name="send" size={20} color="white" /> Gửi tin nhắn
           </Text>
         </TouchableOpacity>
 
         <Image
           style={{ width: "100%", height: 400 }}
-          source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/642/642019.png",
-          }}
+          source={require("../../img/canhcut.png")}
         />
       </View>
     </ScrollView>
@@ -203,10 +200,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F9A529",
-    width: 100,
+    width: 120,
     height: 50,
     borderRadius: 10,
     marginLeft: -230,
+  },
+  imageContact: {
+    width: 95,
+    height: 103,
+  },
+  imageAdress: {
+    width: 95,
+    height: 95,
   },
   buttonTextBook: {
     justifyContent: "center",

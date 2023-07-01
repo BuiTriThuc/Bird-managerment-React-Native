@@ -162,9 +162,7 @@ export default function Booking() {
 
         <Image
           style={{ width: "100%", height: 400 }}
-          source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/642/642019.png",
-          }}
+          source={require("../../img/canhcutip.png")}
         />
       </View>
     </ScrollView>
