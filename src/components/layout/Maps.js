@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import MapView, { Marker, Heatmap } from "react-native-maps";
 import { StyleSheet, View, Text } from "react-native";
+import { Dimensions } from "react-native";
 
 export default function Maps() {
-  const [mapLat, setMapLat] = useState(6.841776681);
-  const [mapLong, setMapLong] = useState(79.869319);
+  const [mapLat, setMapLat] = useState(10.841328);
+  const [mapLong, setMapLong] = useState(106.810473);
 
   return (
     <View style={styles.container}>
       <MapView
-        style={styles.map}
         initialRegion={{
-          latitude: mapLat,
-          longitude: mapLong,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitude: 10.841328,
+          longitude: 106.810473,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
         }}
-      ></MapView>
+        style={styles.map}
+        mapType="standard"
+      >
+        <Marker
+          coordinate={{
+            latitude: 10.841328,
+            longitude: 106.810473,
+          }}
+          title="Bird Shop"
+          description="Bird Shop"
+          pinColor={"red"}
+        />
+      </MapView>
     </View>
   );
 }
@@ -26,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: "100%",
-    height: "100%",
+    width: Dimensions.get("window").width,
+    height: 300,
   },
 });
