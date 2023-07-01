@@ -66,7 +66,7 @@ export default function SignUp() {
         </Text>
 
         <TextInput
-          className="p-3 my-3 mx-3 h-12 border border-[#e1e1e1] rounded-xl "
+          className="p-3 my-3 mx-3 h-16 text-lg border border-[#e1e1e1] rounded-xl "
           placeholder="Email"
           value={email}
           onChangeText={(value) => setEmail(value)}
@@ -78,7 +78,7 @@ export default function SignUp() {
         </Text>
 
         <TextInput
-          className="p-3 my-3 mx-3 h-12 border border-[#e1e1e1] rounded-xl "
+          className="p-3 my-3 mx-3 h-16 text-lg border border-[#e1e1e1] rounded-xl "
           placeholder="Mật khẩu"
           value={password}
           onChangeText={(value) => setPassword(value)}
@@ -91,7 +91,7 @@ export default function SignUp() {
         </Text>
 
         <TextInput
-          className="p-3 my-3 mx-3 h-12 border border-[#e1e1e1] rounded-xl "
+          className="p-3 my-3 mx-3 h-16 text-lg border border-[#e1e1e1] rounded-xl "
           placeholder="Xác nhận mật khẩu"
           value={confirmPassword}
           onChangeText={(value) => setConfirmPassword(value)}
@@ -101,13 +101,13 @@ export default function SignUp() {
       </View>
 
       <Pressable
-        className="rounded-lg m-4 h-11 border-none justify-center items-center bg-[#f4b915]"
+        className="rounded-lg m-4 h-16 border-none justify-center items-center bg-[#f4b915]"
         style={({ pressed }) => [
           { backgroundColor: pressed ? "#363025" : "#f4b915" },
         ]}
         onPress={handleSignUp}
       >
-        <Text className="text-white">Đăng ký</Text>
+        <Text className="text-white font-bold text-xl">Đăng ký</Text>
       </Pressable>
 
       <View className="flex flex-row justify-center w-full my-4">
