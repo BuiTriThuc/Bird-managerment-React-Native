@@ -24,7 +24,7 @@ export default function Maps() {
             latitude: 10.841328,
             longitude: 106.810473,
           }}
-          title="Bird Shop"
+          title="Thức đẹp trai"
           description="Bird Shop"
           pinColor={"red"}
         />
@@ -36,6 +36,7 @@ export default function Maps() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 20,
   },
   map: {
     width: Dimensions.get("window").width,

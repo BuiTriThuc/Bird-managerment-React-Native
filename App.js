@@ -66,12 +66,12 @@ export default function App() {
             component={Home}
             options={{ tabBarLabel: "" }}
           />
-          <Tab.Screen name="BirdScreen" options={{ tabBarLabel: "" }}>
+          <Tab.Screen name="Booking" options={{ tabBarLabel: "" }}>
             {() => (
               <Stack.Navigator>
                 <Stack.Screen
                   name="Bird"
-                  component={BirdScreen}
+                  component={Booking}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen
