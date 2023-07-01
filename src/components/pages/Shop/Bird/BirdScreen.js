@@ -11,7 +11,11 @@ import {
 } from "react-native";
 import BirdData from "../Data/BirdData";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useIsFocused,
+  useNavigation,
+} from "@react-navigation/native";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../../config/firebase";
 import { TouchableHighlight } from "react-native";

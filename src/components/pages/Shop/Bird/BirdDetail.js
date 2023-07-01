@@ -30,7 +30,7 @@ const BirdDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
-          <BirdCarousel />
+          <BirdCarousel data={product.imageList} />
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
           <View style={styles.CountButton}>
