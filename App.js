@@ -33,6 +33,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
+        
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -74,6 +75,7 @@ export default function App() {
                 component={BirdScreen}
                 options={{ headerShown: false }}
               />
+              <Stack.Screen name="Accessory" component={AccessoryScreen} />
               <Stack.Screen name="BirdDetail" component={BirdDetail} />
               <Stack.Screen name="Food" component={BirdFoodScreen} />
               <Stack.Screen name="FoodDetail" component={FoodDetail} />
@@ -96,39 +98,20 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              let iconColor = focused ? "#000000" : "#bb9457";
-              if (route.name === "SignIn") {
-                iconName = "user";
-              } else if(route.name === "SignUp"){
-                iconName = null;
-              }
-
-              return (
-                <Entypo
-                  name={iconName}
-                  size={size}
-                  color={iconColor}
-                  style={{ marginTop: 10 }}
-                />
-              );
-            },
-          })}
+        <Stack.Navigator
+          
         >
-          <Tab.Screen
+          <Stack.Screen
             name="SignIn"
             component={SignIn}
             options={{ tabBarLabel: "" }}
           />
-          <Tab.Screen
+          <Stack.Screen
             name="SignUp"
             component={SignUp}
             options={{ tabBarLabel: "" }}
           />
-        </Tab.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }
