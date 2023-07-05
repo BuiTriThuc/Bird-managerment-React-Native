@@ -25,12 +25,12 @@ const BirdDetail = ({ navigation, route }) => {
         <View>
           {/* <CarouselData /> */}
           <Text
-            onPress={() => navigation.navigate("BirdData")}
+            onPress={() => navigation.navigate("BirdDetail")}
             style={styles.name}
           >
             {product.name}{" "}
           </Text>
-          <BirdCarousel />
+          <BirdCarousel data={product.imageList} />
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
           <View style={styles.CountButton}>

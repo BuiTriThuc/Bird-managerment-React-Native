@@ -7,12 +7,18 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import BirdData from "../Data/BirdData";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useIsFocused,
+  useNavigation,
+} from "@react-navigation/native";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../../config/firebase";
+import { TouchableHighlight } from "react-native";
 
 export default function BirdScreen({ navigation }) {
   const windowWidth = Dimensions.get("window").width;
@@ -27,30 +33,6 @@ export default function BirdScreen({ navigation }) {
   const handleLogout = async () => {
     await signOut(auth);
   };
-
-  const getFavouriteList = async () => {
-    try {
-      // Get favorites from AsyncStorage
-      const favorites = await AsyncStorage.getItem("favorites");
-      if (favorites) {
-        // Parse the favorites from AsyncStorage
-        const parsedFavorites = JSON.parse(favorites);
-
-        // Update the listFavourite state
-        setListFavourite(parsedFavorites);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getFavouriteList();
-  }, []);
-
-  useEffect(() => {
-    getFavouriteList();
-  }, [isFocused]);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -68,6 +50,27 @@ export default function BirdScreen({ navigation }) {
 
   return (
     <ScrollView>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <TouchableHighlight
+          onPress={() => navigation.navigate("Accessory")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Phụ kiện</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => navigation.navigate("Food")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Thức ăn</Text>
+        </TouchableHighlight>
+      </View>
+
       <View style={styles.container}>
         {data.map((product) => (
           <TouchableOpacity
@@ -126,5 +129,16 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
+  },
+  button: {
+    backgroundColor: "#F9A529",
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 16,
   },
 });

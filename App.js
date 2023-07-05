@@ -38,18 +38,26 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let iconColor = focused ? "#000000" : "#bb9457";
+    return (
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              let iconColor = focused ? "#000000" : "#bb9457";
 
-            if (route.name === "Home") {
-              iconName = "home";
-            } else if (route.name === "BirdScreen") {
-              iconName = "shop";
-            } else if (route.name === "Contact") {
-              iconName = "megaphone";
-            } else if (route.name === "News") {
-              iconName = "news";
-            } else if (route.name === "Food") {
-              iconName = null;
-            }
+              if (route.name === "Home") {
+                iconName = "home";
+              } else if (route.name === "BirdScreen") {
+                iconName = "shop";
+              } else if (route.name === "Contact") {
+                iconName = "megaphone";
+              } else if (route.name === "News") {
+                iconName = "news";
+              } else if (route.name === "Food") {
+                iconName = null;
+              }
 
             return (
               <Entypo
