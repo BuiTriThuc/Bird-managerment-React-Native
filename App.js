@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const { user } = useAuth();
 
-  if (user) {
+  // if (user) {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -38,14 +38,6 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let iconColor = focused ? "#000000" : "#bb9457";
-    return (
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              let iconColor = focused ? "#000000" : "#bb9457";
 
               if (route.name === "Home") {
                 iconName = "home";
@@ -103,24 +95,24 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-  } else {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator
+  // } else {
+  //   return (
+  //     <NavigationContainer>
+  //       <Stack.Navigator
           
-        >
-          <Stack.Screen
-            name="SignIn"
-            component={SignIn}
-            options={{ tabBarLabel: "" }}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUp}
-            options={{ tabBarLabel: "" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
+  //       >
+  //         <Stack.Screen
+  //           name="SignIn"
+  //           component={SignIn}
+  //           options={{ tabBarLabel: "" }}
+  //         />
+  //         <Stack.Screen
+  //           name="SignUp"
+  //           component={SignUp}
+  //           options={{ tabBarLabel: "" }}
+  //         />
+  //       </Stack.Navigator>
+  //     </NavigationContainer>
+  //   );
+  // }
 }
