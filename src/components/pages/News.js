@@ -1,5 +1,5 @@
 import { Linking } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native";
@@ -7,8 +7,42 @@ import { View } from "react-native";
 import { Text } from "react-native";
 import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
-
+import NewsData from "./Shop/Data/NewsData";
+import { Dimensions } from "react-native";
+import {
+  useFocusEffect,
+  useIsFocused,
+  useNavigation,
+} from "@react-navigation/native";
 const News = () => {
+  const windowWidth = Dimensions.get("window").width;
+  const [listFavourite, setListFavourite] = useState([]);
+  const [data, setData] = useState([]);
+  const isFocused = useIsFocused();
+  const navigation = useNavigation(); // Use useNavigation to access the navigation object
+
+  const handlePress = (product) => {
+    navigation.navigate("NewsDetail", { product });
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const updatedData = () => {
+        const updatedData = NewsData.map((item) => ({
+          ...item,
+          favorite: listFavourite.some((fav) => fav.id === item.id),
+        }));
+        setData(updatedData);
+      };
+
+      updatedData();
+    }, [listFavourite])
+  );
+
   const handleReadMore = () => {
     Linking.openURL(
       "https://www.bachhoaxanh.com/kinh-nghiem-hay/cac-giong-chim-canh-pho-bien-thuong-duoc-nuoi-tai-viet-nam-1342859"
@@ -18,136 +52,53 @@ const News = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text>News</Text>
-        <View style={{ alignItems: "center", marginBottom: 50 }}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "https://cdn.tgdd.vn/Files/2021/04/12/1342859/cac-giong-chim-canh-pho-bien-thuong-duoc-nuoi-tai-viet-nam-202104121951172147.jpg",
-            }}
-          />
-          <View style={styles.newsItem}>
-            <View style={{ alignItems: "center" }}>
-              <Text style={{ fontWeight: "bold", fontSize: 20, marginTop: 10 }}>
-                Các loại chim phổ biến ở Việt Nam
-              </Text>
-              <Text
-                style={{
-                  fontWeight: "300",
-                  fontSize: 15,
-                  marginTop: 20,
-                  textAlign: "justify",
-                  marginLeft: 10,
-                  marginRight: 10,
-                }}
-              >
-                Nuôi chim cảnh không còn xa lạ với nhiều người, đặc biệt là
-                những người thích có một con vật nuôi trong nhà...
-              </Text>
-              <View style={{ flexDirection: "row", marginTop: 25 }}>
-                <View style={{ flexDirection: "row", marginRight: 10 }}>
-                  <AntDesign
-                    name="clockcircle"
-                    size={20}
-                    color="#F9A529"
-                    style={{ marginRight: 5 }}
-                  />
-                  <Text>13/7/2023</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 30, margin: 5 }}>
+          News
+        </Text>
+        {data.map((product) => (
+          <View key={product.id}>
+            <View style={{ alignItems: "center", marginBottom: 50 }}>
+              <Image style={styles.image} source={{ uri: product.img }} />
+              <View style={styles.newsItem}>
+                <View style={{ alignItems: "center" }}>
+                  <TouchableOpacity
+                    style={{ fontWeight: "bold", fontSize: 20, marginTop: 10 }}
+                    onPress={() => handlePress(product)}
+                  >
+                    <Text>{product.title}</Text>
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      fontWeight: "300",
+                      fontSize: 15,
+                      marginTop: 20,
+                      textAlign: "justify",
+                      marginLeft: 10,
+                      marginRight: 10,
+                    }}
+                  >
+                    {product.des}
+                  </Text>
+                  <View style={{ flexDirection: "row", marginTop: 25 }}>
+                    <View style={{ flexDirection: "row", marginRight: 10 }}>
+                      <AntDesign
+                        name="clockcircle"
+                        size={20}
+                        color="#F9A529"
+                        style={{ marginRight: 5 }}
+                      />
+                      <Text>{product.time}</Text>
+                    </View>
+                    <Text>|</Text>
+                    <TouchableOpacity onPress={handleReadMore}>
+                      <Text style={{ marginLeft: 10 }}>Xem thêm</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
-                <Text>|</Text>
-                <TouchableOpacity onPress={handleReadMore}>
-                  <Text style={{ marginLeft: 10 }}>Xem thêm</Text>
-                </TouchableOpacity>
               </View>
             </View>
           </View>
-        </View>
-        <View style={{ alignItems: "center", marginBottom: 50 }}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "https://cdn.tgdd.vn/Files/2021/04/12/1342859/cac-giong-chim-canh-pho-bien-thuong-duoc-nuoi-tai-viet-nam-202104121951172147.jpg",
-            }}
-          />
-          <View style={styles.newsItem}>
-            <View style={{ alignItems: "center" }}>
-              <Text style={{ fontWeight: "bold", fontSize: 20, marginTop: 10 }}>
-                Các loại chim phổ biến ở Việt Nam
-              </Text>
-              <Text
-                style={{
-                  fontWeight: "300",
-                  fontSize: 15,
-                  marginTop: 20,
-                  textAlign: "justify",
-                  marginLeft: 10,
-                  marginRight: 10,
-                }}
-              >
-                Nuôi chim cảnh không còn xa lạ với nhiều người, đặc biệt là
-                những người thích có một con vật nuôi trong nhà...
-              </Text>
-              <View style={{ flexDirection: "row", marginTop: 25 }}>
-                <View style={{ flexDirection: "row", marginRight: 10 }}>
-                  <AntDesign
-                    name="clockcircle"
-                    size={20}
-                    color="#F9A529"
-                    style={{ marginRight: 5 }}
-                  />
-                  <Text>13/7/2023</Text>
-                </View>
-                <Text>|</Text>
-                <TouchableOpacity onPress={handleReadMore}>
-                  <Text style={{ marginLeft: 10 }}>Xem thêm</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View style={{ alignItems: "center", marginBottom: 50 }}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "https://cdn.tgdd.vn/Files/2021/04/12/1342859/cac-giong-chim-canh-pho-bien-thuong-duoc-nuoi-tai-viet-nam-202104121951172147.jpg",
-            }}
-          />
-          <View style={styles.newsItem}>
-            <View style={{ alignItems: "center" }}>
-              <Text style={{ fontWeight: "bold", fontSize: 20, marginTop: 10 }}>
-                Các loại chim phổ biến ở Việt Nam
-              </Text>
-              <Text
-                style={{
-                  fontWeight: "300",
-                  fontSize: 15,
-                  marginTop: 20,
-                  textAlign: "justify",
-                  marginLeft: 10,
-                  marginRight: 10,
-                }}
-              >
-                Nuôi chim cảnh không còn xa lạ với nhiều người, đặc biệt là
-                những người thích có một con vật nuôi trong nhà...
-              </Text>
-              <View style={{ flexDirection: "row", marginTop: 25 }}>
-                <View style={{ flexDirection: "row", marginRight: 10 }}>
-                  <AntDesign
-                    name="clockcircle"
-                    size={20}
-                    color="#F9A529"
-                    style={{ marginRight: 5 }}
-                  />
-                  <Text>13/7/2023</Text>
-                </View>
-                <Text>|</Text>
-                <TouchableOpacity onPress={handleReadMore}>
-                  <Text style={{ marginLeft: 10 }}>Xem thêm</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
+        ))}
       </View>
     </ScrollView>
   );

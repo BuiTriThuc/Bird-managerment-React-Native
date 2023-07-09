@@ -19,99 +19,106 @@ import AccessoryDetail from "./src/components/pages/Shop/Accessory/AccessoryDeta
 import Home from "./src/components/pages/Home";
 import Contact from "./src/components/pages/Contact";
 import News from "./src/components/pages/News";
+import NewsDetail from "./src/components/pages/NewsDetail";
 
 Entypo.loadFont();
 
 enableScreens();
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   const { user } = useAuth();
 
-  // if (user) {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            let iconColor = focused ? "#000000" : "#bb9457";
+      {user ? (
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              let iconColor = focused ? "#000000" : "#bb9457";
 
-            if (route.name === "Home") {
-              iconName = "home";
-            } else if (route.name === "BirdScreenn") {
-              iconName = "shop";
-            } else if (route.name === "Contact") {
-              iconName = "megaphone";
-            } else if (route.name === "News") {
-              iconName = "news";
-            } else if (route.name === "Food") {
-              iconName = null;
-            }
+              if (route.name === "Home") {
+                iconName = "home";
+              } else if (route.name === "BirdScreens") {
+                iconName = "shop";
+              } else if (route.name === "Contact") {
+                iconName = "megaphone";
+              } else if (route.name === "Newss") {
+                iconName = "news";
+              } else if (route.name === "Food") {
+                iconName = null;
+              }
 
-            return (
-              <Entypo
-                name={iconName}
-                size={size}
-                color={iconColor}
-                style={{ marginTop: 10 }}
-              />
-            );
-          },
-        })}
-      >
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{ tabBarLabel: "", headerShown: false }}
-        />
-        <Tab.Screen name="BirdScreenn" options={{ tabBarLabel: "" }}>
-          {() => (
-            <Stack.Navigator>
-              <Stack.Screen
-                name="BirdScreen"
-                component={BirdScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen name="Accessory" component={AccessoryScreen} />
-              <Stack.Screen name="BirdDetail" component={BirdDetail} />
-              <Stack.Screen name="Food" component={BirdFoodScreen} />
-              <Stack.Screen name="FoodDetail" component={FoodDetail} />
-            </Stack.Navigator>
-          )}
-        </Tab.Screen>
-        <Tab.Screen
-          name="Contact"
-          component={Contact}
-          options={{ tabBarLabel: "" }}
-        />
-        <Tab.Screen
-          name="News"
-          component={News}
-          options={{ tabBarLabel: "" }}
-        />
-      </Tab.Navigator>
+              return (
+                <Entypo
+                  name={iconName}
+                  size={size}
+                  color={iconColor}
+                  style={{ marginTop: 10 }}
+                />
+              );
+            },
+          })}
+        >
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{ tabBarLabel: "", headerShown: false }}
+          />
+          <Tab.Screen name="BirdScreens" options={{ tabBarLabel: "" }}>
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="BirdScreen"
+                  component={BirdScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen name="Accessory" component={AccessoryScreen} />
+                <Stack.Screen name="BirdDetail" component={BirdDetail} />
+                <Stack.Screen name="Food" component={BirdFoodScreen} />
+                <Stack.Screen name="FoodDetail" component={FoodDetail} />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
+          <Tab.Screen
+            name="Contact"
+            component={Contact}
+            options={{ tabBarLabel: "" }}
+          />
+          <Tab.Screen name="Newss" options={{ tabBarLabel: "" }}>
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="News"
+                  component={News}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="NewsDetail"
+                  component={NewsDetail}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
+        </Tab.Navigator>
+      ) : (
+        <Stack.Navigator>
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ tabBarLabel: "" }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ tabBarLabel: "" }}
+          />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
-  // } else {
-  //   return (
-  //     <NavigationContainer>
-  //       <Stack.Navigator
-
-  //       >
-  //         <Stack.Screen
-  //           name="SignIn"
-  //           component={SignIn}
-  //           options={{ tabBarLabel: "" }}
-  //         />
-  //         <Stack.Screen
-  //           name="SignUp"
-  //           component={SignUp}
-  //           options={{ tabBarLabel: "" }}
-  //         />
-  //       </Stack.Navigator>
-  //     </NavigationContainer>
-  //   );
-  // }
 }
