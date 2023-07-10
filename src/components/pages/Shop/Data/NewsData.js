@@ -26,9 +26,9 @@ const NewsData = [
     desDetail:
       "Chim cảnh và phong thủy! Khi chúng ta nhắc đến chim cảnh đẹp thì chúng ta đang nhắc đến cái đẹp, có khả năng là tiếng hót trong trẻo nhẹ nhàng của chú chim giúp cho bạn quên những đi những giây phút mệt nhọc trong công việc, cũng có thể nhắc đến chim cảnh là bạn nhắc đến vẻ đẹp của chú chim",
     img1: "https://khoalichsu.edu.vn/wp-content/uploads/2022/08/chim-canh-va-phong-thuy.jpg",
-    name1: "Phong Thủy",
-    name2: "Phong Thủy",
-    name3: "Phong Thủy",
+    name1: "Thủy",
+    name2: "Hỏa",
+    name3: "Thổ",
     des2: "Phong thủy theo ngũ hành ảnh hưởng như thế nào?Nuôi mèo? Nuôi mèo trong nhà có công dụng gì? Chú mèo trong nhà bạn nó là hành Mộc những gia chủ trong nhà là hành Kim thì rất dễ sinh lợi và phát tài tương đương gặp thường xuyên may mắn vì theo phong thủy ngũ hành thì Kim thắng Mộc. Những gia chủ tuổi Dậu và tuổi Thân sẽ rất thích hợp cho việc nuôi Mèo giúp gia đình của bạn giàu có hơn.Đối với việc nuôi cá thì sao? Cá thì là hành Thủy, những gia chủ mạng Thổ sẽ thích hợp cho việc nuôi cá.",
     img2: "https://cdn.tgdd.vn/Files/2021/04/12/1342859/cac-giong-chim-canh-pho-bien-thuong-duoc-nuoi-tai-viet-nam-202104121951310007.jpg",
     des3: "Đó là những kiến thức cơ bản về chim cảnh và phong thủy tương đương những vật nuôi khác gây ảnh hưởng thể trạng và tài lộc của bạn mà chim cảnh Minh Châu chia sẻ. Nếu bạn muốn mua chim cảnh thì hãy đến chim cảnh Minh Châu – công ty chúng tôi chuyên cung cấp chim cảnh đẹp, chim cảnh giá rẻ, chim cảnh đuôi dài và nhiều loại chim khác, mặt khác cung cấp sỉ lẻ lồng chim chào mào, lồng chim họa mi, lồng chim sơn ca,…và thường xuyên loại lồng chim chất lượng giá trị khác với đủ kích thước.",
