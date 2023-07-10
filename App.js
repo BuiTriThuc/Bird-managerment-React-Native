@@ -18,8 +18,8 @@ import AccessoryScreen from "./src/components/pages/Shop/Accessory/AccessoryScre
 import AccessoryDetail from "./src/components/pages/Shop/Accessory/AccessoryDetail";
 import Home from "./src/components/pages/Home";
 import Contact from "./src/components/pages/Contact";
-import News from "./src/components/pages/News";
-import NewsDetail from "./src/components/pages/NewsDetail";
+import News from "./src/components/pages/News/News";
+import NewsDetail from "./src/components/pages/News/NewsDetail";
 
 Entypo.loadFont();
 
@@ -46,7 +46,7 @@ export default function App() {
                 iconName = "shop";
               } else if (route.name === "Contact") {
                 iconName = "megaphone";
-              } else if (route.name === "Newss") {
+              } else if (route.name === "News") {
                 iconName = "news";
               } else if (route.name === "Food") {
                 iconName = null;
@@ -88,11 +88,11 @@ export default function App() {
             component={Contact}
             options={{ tabBarLabel: "" }}
           />
-          <Tab.Screen name="Newss" options={{ tabBarLabel: "" }}>
+          <Tab.Screen name="News" options={{ tabBarLabel: "" }}>
             {() => (
               <Stack.Navigator>
                 <Stack.Screen
-                  name="News"
+                  name="Newss"
                   component={News}
                   options={{ headerShown: false }}
                 />
