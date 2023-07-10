@@ -33,6 +33,9 @@ export default function NewsDetail({ navigation, route }) {
               style={{
                 flexDirection: "row",
                 marginLeft: 10,
+                marginBottom: 10,
+                textAlign: "justify",
+                marginHorizontal: 10,
               }}
             >
               {product.des1}
@@ -47,6 +50,9 @@ export default function NewsDetail({ navigation, route }) {
               style={{
                 flexDirection: "row",
                 marginLeft: 10,
+                marginBottom: 10,
+                textAlign: "justify",
+                marginHorizontal: 10,
               }}
             >
               {product.des2}
@@ -61,6 +67,9 @@ export default function NewsDetail({ navigation, route }) {
               style={{
                 flexDirection: "row",
                 marginLeft: 10,
+                marginBottom: 10,
+                textAlign: "justify",
+                marginHorizontal: 10,
               }}
             >
               {product.des3}
@@ -87,6 +96,7 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     fontSize: 15,
   },
+
   image: {
     marginHorizontal: 10,
     height: 300,
