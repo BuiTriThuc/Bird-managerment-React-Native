@@ -7,7 +7,7 @@ import { View } from "react-native";
 import { Text } from "react-native";
 import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
-import NewsData from "./Shop/Data/NewsData";
+import NewsData from "../Shop/Data/NewsData";
 import { Dimensions } from "react-native";
 import {
   useFocusEffect,
@@ -61,11 +61,8 @@ const News = () => {
               <Image style={styles.image} source={{ uri: product.img }} />
               <View style={styles.newsItem}>
                 <View style={{ alignItems: "center" }}>
-                  <TouchableOpacity
-                    style={{ fontWeight: "bold", fontSize: 20, marginTop: 10 }}
-                    onPress={() => handlePress(product)}
-                  >
-                    <Text>{product.title}</Text>
+                  <TouchableOpacity onPress={() => handlePress(product)}>
+                    <Text style={styles.title}>{product.title}</Text>
                   </TouchableOpacity>
                   <Text
                     style={{
@@ -115,6 +112,11 @@ const styles = StyleSheet.create({
     height: 250,
     borderRadius: 10,
     position: "absolute",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
   },
   newsItem: {
     width: 300,
