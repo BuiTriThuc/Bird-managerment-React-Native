@@ -20,6 +20,7 @@ import Home from "./src/components/pages/Home";
 import Contact from "./src/components/pages/Contact";
 import News from "./src/components/pages/News/News";
 import NewsDetail from "./src/components/pages/News/NewsDetail";
+import AdressAPI from "./src/components/AdressAPI";
 
 Entypo.loadFont();
 
@@ -77,9 +78,15 @@ export default function App() {
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen name="Accessory" component={AccessoryScreen} />
-                <Stack.Screen name="BirdDetail" component={BirdDetail} />
+                <Stack.Screen
+                  name="BirdDetail"
+                  component={BirdDetail}
+                  options={{ headerShown: false }}
+                />
                 <Stack.Screen name="Food" component={BirdFoodScreen} />
+                <Stack.Screen name="Bird" component={BirdScreen} />
                 <Stack.Screen name="FoodDetail" component={FoodDetail} />
+                <Stack.Screen name="AdressAPI" component={AdressAPI} />
               </Stack.Navigator>
             )}
           </Tab.Screen>
