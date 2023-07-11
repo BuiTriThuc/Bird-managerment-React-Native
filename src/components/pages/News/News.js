@@ -25,10 +25,6 @@ const News = () => {
     navigation.navigate("NewsDetail", { product });
   };
 
-  const handleLogout = async () => {
-    await signOut(auth);
-  };
-
   useFocusEffect(
     React.useCallback(() => {
       const updatedData = () => {

@@ -4,6 +4,8 @@ import { Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
+import { auth } from "../../../../config/firebase";
+import { signOut } from "firebase/auth";
 
 const Profile = () => {
   const handleLogout = async () => {
