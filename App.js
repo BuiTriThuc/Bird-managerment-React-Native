@@ -20,6 +20,7 @@ import Home from "./src/components/pages/Home";
 import Contact from "./src/components/pages/Contact";
 import News from "./src/components/pages/News/News";
 import NewsDetail from "./src/components/pages/News/NewsDetail";
+import Profile from "./src/components/pages/Account/Profile";
 
 Entypo.loadFont();
 
@@ -50,6 +51,8 @@ export default function App() {
                 iconName = "news";
               } else if (route.name === "Food") {
                 iconName = null;
+              } else if (route.name = "Profile"){
+                iconName = "user";
               }
 
               return (
@@ -104,6 +107,8 @@ export default function App() {
               </Stack.Navigator>
             )}
           </Tab.Screen>
+          <Tab.Screen name="Profile" component={Profile} options={{ tabBarLabel: "" }}/>
+            
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
