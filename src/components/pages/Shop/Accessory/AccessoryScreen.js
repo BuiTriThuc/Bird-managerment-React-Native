@@ -11,8 +11,6 @@ import {
 import BirdData from "../Data/AccessoryData";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect, useIsFocused } from "@react-navigation/native";
-import { signOut } from "firebase/auth";
-import { auth } from "../../../../../config/firebase";
 import { Button } from "react-native";
 import { TouchableHighlight } from "react-native";
 
@@ -24,10 +22,6 @@ export default function AccessoryScreen({ navigation }) {
 
   const handlePress = (product) => {
     navigation.navigate("AccessoryDetail", { product });
-  };
-
-  const handleLogout = async () => {
-    await signOut(auth);
   };
 
   useFocusEffect(
@@ -79,13 +73,6 @@ export default function AccessoryScreen({ navigation }) {
           </TouchableOpacity>
         ))}
       </View>
-
-      <TouchableOpacity
-        onPress={handleLogout}
-        className="p-4 bg-red-500 rounded-full"
-      >
-        <Text className="text-lg text-white font-bold text-center">Logout</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 }
