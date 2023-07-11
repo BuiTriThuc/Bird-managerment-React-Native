@@ -10,6 +10,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import Maps from "../layout/Maps";
+import AdressAPI from "../AdressAPI";
 
 export default function Contact() {
   return (
@@ -31,6 +32,7 @@ export default function Contact() {
         <Text style={{ fontWeight: "bold", fontSize: 25 }}>
           Văn phòng giao dịch
         </Text>
+        <AdressAPI />
         <Text
           style={{
             textAlign: "center",
