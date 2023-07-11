@@ -60,6 +60,7 @@ const BirdDetail = ({ navigation, route }) => {
               Vận chuyển toàn quốc: miễn phí vận chuyển trong vòng bán kính 15km
             </Text>
           </View>
+          
           <View style={styles.backItem}>
             <FontAwesome
               name="parachute-box"
