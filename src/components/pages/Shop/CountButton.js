@@ -4,20 +4,25 @@ import FontAwesome from "@expo/vector-icons/FontAwesome5";
 
 // import Colors from "../../constants/Colors";
 
-const CountButton = () => {
-  const [value, setValue] = useState(0);
+const CountButton = ({ onChange }) => {
+  const [value, setValue] = useState(1);
 
   const minusValue = () => {
-    if (value > 0) {
+    if (value > 0 && !(value - 1 === 0)) {
       setValue(value - 1);
+      onChange(value - 1)
     } else {
-      setValue(0);
+      setValue(1);
+      onChange(1)
     }
   };
 
   const plusValue = () => {
     setValue(value + 1);
+    onChange(value + 1)
   };
+
+
 
   return (
     <View style={styles.container}>
