@@ -9,22 +9,35 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { FontAwesome } from "@expo/vector-icons";
 import Carousel from "react-native-snap-carousel";
 import BirdData from "./Shop/Data/BirdData";
 import FoodData from "./Shop/Data/FoodData";
 import AccessoryData from "./Shop/Data/AccessoryData";
 import NewsData from "./Shop/Data/NewsData";
+import NewsDetail from "./News/NewsDetail";
+import BirdDetail from "./Shop/Bird/BirdDetail";
 
 const { width } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const [currentTab, setCurrentTab] = useState("birds");
+  const [listFavourite, setListFavourite] = useState([]);
+  const [data, setData] = useState([]);
+  const navigation = useNavigation(); 
   const carouselData = [
     { image: require("../../img/carousel-1.jpg") },
     { image: require("../../img/carousel-2.jpg") },
     { image: require("../../img/carousel-3.jpg") },
   ];
+  const handleNewsPress = (product) => {
+    navigation.navigate("NewsDetail", { product });
+  };
+  const handleBirdPress = (product) => {
+    navigation.navigate("BirdDetail", { product });
+  };
 
   const renderCarouselItem = ({ item }) => (
     <View style={styles.carouselItem}>
@@ -33,19 +46,34 @@ const HomeScreen = () => {
   );
 
   const renderBestSeller = ({ item }) => (
-    <View style={styles.bestSellerItem}>
+    <TouchableOpacity style={styles.bestSellerItem} onPress={() => handleBirdPress(item)}>
       <Image source={{ uri: item.image.uri }} style={styles.bestSellerImage} />
       <Text style={styles.bestSellerName}>{item.name}</Text>
       <View style={styles.productFooter}>
         <Text style={styles.bestSellerPrice}>{item.price}</Text>
         <Text style={styles.bestSellerStatus}>Bán chạy</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   const birdRows = BirdData.slice(0, 4);
   const foodRows = FoodData.slice(0, 4);
   const AccessoryRows = AccessoryData.slice(0, 4);
+  const newsRows = data.slice(0, 2);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const updatedData = () => {
+        const updatedData = NewsData.map((item) => ({
+          ...item,
+          favorite: listFavourite.some((fav) => fav.id === item.id),
+        }));
+        setData(updatedData);
+      };
+
+      updatedData();
+    }, [listFavourite])
+  );
 
   const ContactSection = () => {
     return (
@@ -196,17 +224,51 @@ const HomeScreen = () => {
             )}
           </View>
         </View>
-
-        <View style={styles.newsContainer}>
-          <Text style={styles.newsTitle}>Tin tức</Text>
-          {NewsData.map((item) => (
-            <View key={item.id} style={styles.newsItem}>
-              <FontAwesome name="newspaper-o" style={styles.newsIcon} />
-              <View style={styles.newsItemContent}>
-                <TouchableOpacity>
-                  <Text style={styles.newsItemTitle}>{item.title}</Text>
-                </TouchableOpacity>
-                <Text style={styles.newsItemSummary}>{item.des}</Text>
+        <Text
+          style={{
+            textAlign: "center",
+            paddingVertical: 20,
+            fontSize: 18,
+            fontWeight: 600,
+          }}
+        >
+          Tin tức về loài chim
+        </Text>
+        <View style={{ backgroundColor: "#fff",paddingTop: 20 }}>
+          {newsRows.map((product) => (
+            <View key={product.id}>
+              <View style={{ alignItems: "center", marginBottom: 50 }}>
+                <Image style={styles.image} source={{ uri: product.img }} />
+                <View style={styles.newsItem}>
+                  <View style={{ alignItems: "center" }}>
+                    <TouchableOpacity onPress={() => handleNewsPress(product)}>
+                      <Text style={styles.title}>{product.title}</Text>
+                    </TouchableOpacity>
+                    <Text
+                      style={{
+                        fontWeight: "300",
+                        fontSize: 15,
+                        marginTop: 20,
+                        textAlign: "justify",
+                        marginLeft: 10,
+                        marginRight: 10,
+                      }}
+                    >
+                      {product.des}
+                    </Text>
+                    <View style={{ flexDirection: "row", marginTop: 25 }}>
+                      <View style={{ flexDirection: "row", marginRight: 10 }}>
+                        <AntDesign
+                          name="clockcircle"
+                          size={20}
+                          color="#F9A529"
+                          style={{ marginRight: 5 }}
+                        />
+                        <Text>{product.time}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
               </View>
             </View>
           ))}
@@ -387,6 +449,31 @@ const styles = StyleSheet.create({
   },
   newsItemSummary: {
     fontSize: 14,
+  },
+  image: {
+    width: 350,
+    height: 250,
+    borderRadius: 10,
+    position: "absolute",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  newsItem: {
+    width: 300,
+    height: 200,
+    backgroundColor: "#ffffff",
+    position: "relative",
+    marginTop: 100,
+    borderRadius: 10,
+    shadowColor: "black",
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 3,
+    backgroundColor: "white",
   },
 });
 
