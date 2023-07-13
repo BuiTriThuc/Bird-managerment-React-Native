@@ -166,17 +166,26 @@ const Profile = () => {
           </View>
           <View
             style={{
-              backgroundColor: "#E68186",
               width: "70%",
               height: 40,
               justifyContent: "center",
               alignItems: "center",
-              borderRadius: 30,
-              marginBottom: 30,
+              marginTop: 25,
             }}
           >
-            <TouchableOpacity onPress={handleLogout}>
-              <Text>Logout</Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#E68186",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 30,
+                marginBottom: 30,
+                width: "70%",
+                height: 40,
+              }}
+              onPress={handleLogout}
+            >
+              <Text style={{ fontWeight: "bold" }}>Logout</Text>
             </TouchableOpacity>
           </View>
         </View>
