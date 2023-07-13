@@ -20,11 +20,8 @@ import Home from "./src/components/pages/Home";
 import Contact from "./src/components/pages/Contact";
 import News from "./src/components/pages/News/News";
 import NewsDetail from "./src/components/pages/News/NewsDetail";
-<<<<<<< HEAD
 import Profile from "./src/components/pages/Account/Profile";
-=======
 import AdressAPI from "./src/components/AdressAPI";
->>>>>>> f654190afa87531ecfe119a8529016291d0e65ed
 
 Entypo.loadFont();
 

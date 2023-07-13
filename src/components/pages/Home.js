@@ -14,6 +14,7 @@ import Carousel from "react-native-snap-carousel";
 import BirdData from "./Shop/Data/BirdData";
 import FoodData from "./Shop/Data/FoodData";
 import AccessoryData from "./Shop/Data/AccessoryData";
+import NewsData from "./Shop/Data/NewsData";
 
 const { width } = Dimensions.get("window");
 
@@ -46,36 +47,40 @@ const HomeScreen = () => {
   const foodRows = FoodData.slice(0, 4);
   const AccessoryRows = AccessoryData.slice(0, 4);
 
-  const NewsSection = () => {
+  const ContactSection = () => {
     return (
-      <View style={styles.newsContainer}>
-        <Text style={styles.newsTitle}>Tin tức</Text>
-        <View style={styles.newsItem}>
-          <FontAwesome name="phone" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Liên hệ</Text>
-            <Text style={styles.newsItemText}>0856597778 - 0856597778</Text>
-            <Text style={styles.newsItemText}>Email: contact@birdshop.com</Text>
+      <View style={styles.contactContainer}>
+        <Text style={styles.contactTitle}>Liên hệ</Text>
+        <View style={styles.contactItem}>
+          <FontAwesome name="phone" style={styles.contactIcon} />
+          <View style={styles.contactItemContent}>
+            <Text style={styles.contactItemTitle}>Liên hệ</Text>
+            <Text style={styles.contactItemText}>0856597778 - 0856597778</Text>
+            <Text style={styles.contactItemText}>
+              Email: contact@birdshop.com
+            </Text>
           </View>
         </View>
-        <View style={styles.newsItem}>
-          <FontAwesome name="building" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Văn phòng giao dịch</Text>
-            <Text style={styles.newsItemText}>
+        <View style={styles.contactItem}>
+          <FontAwesome name="building" style={styles.contactIcon} />
+          <View style={styles.contactItemContent}>
+            <Text style={styles.contactItemTitle}>Văn phòng giao dịch</Text>
+            <Text style={styles.contactItemText}>
               Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành
               phố Hồ Chí Minh
             </Text>
-            <Text style={styles.newsItemText}>
+            <Text style={styles.contactItemText}>
               Giờ làm việc: Thứ 2 - Thứ 6, 8:00 - 17:00
             </Text>
           </View>
         </View>
-        <View style={styles.newsItem}>
-          <FontAwesome name="envelope" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Bộ phận hỗ trợ khách hàng</Text>
-            <Text style={styles.newsItemText}>Buitrithuc1008@gmail.com</Text>
+        <View style={styles.contactItem}>
+          <FontAwesome name="envelope" style={styles.contactIcon} />
+          <View style={styles.contactItemContent}>
+            <Text style={styles.contactItemTitle}>
+              Bộ phận hỗ trợ khách hàng
+            </Text>
+            <Text style={styles.contactItemText}>Buitrithuc1008@gmail.com</Text>
           </View>
         </View>
       </View>
@@ -191,8 +196,23 @@ const HomeScreen = () => {
             )}
           </View>
         </View>
-        <View style={styles.newsSection}>
-          <NewsSection />
+
+        <View style={styles.newsContainer}>
+          <Text style={styles.newsTitle}>Tin tức</Text>
+          {NewsData.map((item) => (
+            <View key={item.id} style={styles.newsItem}>
+              <FontAwesome name="newspaper-o" style={styles.newsIcon} />
+              <View style={styles.newsItemContent}>
+                <TouchableOpacity>
+                  <Text style={styles.newsItemTitle}>{item.title}</Text>
+                </TouchableOpacity>
+                <Text style={styles.newsItemSummary}>{item.des}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
+        <View style={styles.contactSection}>
+          <ContactSection />
         </View>
       </View>
     </ScrollView>
@@ -308,6 +328,36 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 600,
   },
+  contactContainer: {
+    backgroundColor: "#fff",
+    padding: 20,
+    marginTop: 20,
+  },
+  contactTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  contactItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  contactIcon: {
+    fontSize: 24,
+    marginRight: 10,
+    color: "green", // Màu biểu tượng
+  },
+  contactItemContent: {
+    flex: 1,
+  },
+  contactItemTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  contactItemText: {
+    fontSize: 14,
+  },
   newsContainer: {
     backgroundColor: "#fff",
     padding: 20,
@@ -326,7 +376,7 @@ const styles = StyleSheet.create({
   newsIcon: {
     fontSize: 24,
     marginRight: 10,
-    color: "green", // Màu biểu tượng
+    color: "green",
   },
   newsItemContent: {
     flex: 1,
@@ -335,7 +385,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  newsItemText: {
+  newsItemSummary: {
     fontSize: 14,
   },
 });
