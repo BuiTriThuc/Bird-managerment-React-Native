@@ -52,7 +52,7 @@ export default function App() {
                 iconName = "news";
               } else if (route.name === "Food") {
                 iconName = null;
-              } else if (route.name = "Profile"){
+              } else if ((route.name = "Profile")) {
                 iconName = "user";
               }
 
@@ -114,8 +114,11 @@ export default function App() {
               </Stack.Navigator>
             )}
           </Tab.Screen>
-          <Tab.Screen name="Profile" component={Profile} options={{ tabBarLabel: "" }}/>
-            
+          <Tab.Screen
+            name="Profile"
+            component={Profile}
+            options={{ tabBarLabel: "" }}
+          />
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
