@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   TouchableOpacity,
   View,
@@ -11,10 +11,12 @@ import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import BirdDetailSuggest from "./BirdDetailSuggest";
 import CountButton from "../../Shop/CountButton";
 import BirdCarousel from "./BirdCarosel";
+import { CartContext } from "../../../provider/CartProvider";
 
 const BirdDetail = ({ navigation, route }) => {
   let { product } = route.params;
-
+  const { addToCart } = useContext(CartContext)
+  const [quantity, setQuantity] = useState(1)
   const clearAsyncStorage = async () => {
     AsyncStorage.clear();
   };
@@ -35,15 +37,15 @@ const BirdDetail = ({ navigation, route }) => {
           <Text style={styles.price}>{product.price} VND</Text>
           <View style={styles.CountButton}>
             <Text style={{ fontSize: 15 }}>Số luợng:</Text>
-            <CountButton style={styles.Count} />
+            <CountButton style={styles.Count} onChange={(value) => setQuantity(value)} />
           </View>
-          <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
+          <TouchableOpacity style={styles.buttonBuy} onPress={() => { navigation.navigate("Cart"); addToCart({ ...product, quantity }) }}>
             <Text style={styles.buttonText}>
               <FontAwesome name="opencart" size={22} color="white" /> Mua Ngay
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
+          <TouchableOpacity style={styles.buttonAddCart} onPress={() => { addToCart({ ...product, quantity }) }}>
             <Text style={styles.buttonText}>
               <FontAwesome name="cart-plus" size={22} color="white" /> Thêm vào
               giỏ hàng
@@ -60,7 +62,7 @@ const BirdDetail = ({ navigation, route }) => {
               Vận chuyển toàn quốc: miễn phí vận chuyển trong vòng bán kính 15km
             </Text>
           </View>
-          
+
           <View style={styles.backItem}>
             <FontAwesome
               name="parachute-box"

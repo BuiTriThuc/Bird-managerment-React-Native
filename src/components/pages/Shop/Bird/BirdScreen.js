@@ -16,6 +16,8 @@ import {
   useIsFocused,
   useNavigation,
 } from "@react-navigation/native";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../../config/firebase";
 import { TouchableHighlight } from "react-native";
 
 export default function BirdScreen({ navigation }) {
@@ -26,6 +28,10 @@ export default function BirdScreen({ navigation }) {
 
   const handlePress = (product) => {
     navigation.navigate("BirdDetail", { product });
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
   };
 
   useFocusEffect(
