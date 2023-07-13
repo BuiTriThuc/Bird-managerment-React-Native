@@ -91,7 +91,18 @@ const TabScreen = () => {
         },
       })}
     >
-      <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: "" }} />
+      <Tab.Screen name="Home" options={{ tabBarLabel: "" }}>
+        {() => (
+          <Stack.Navigator>
+            <Stack.Screen name="Homes" component={Home} />
+            <Stack.Screen name="BirdDetail" component={BirdDetail} />
+            <Stack.Screen name="FoodDetail" component={FoodDetail} />
+            <Stack.Screen name="AccessoryDetail" component={AccessoryDetail} />
+            <Stack.Screen name="NewsDetail" component={NewsDetail} />
+            <Stack.Screen name="News" component={News} />
+          </Stack.Navigator>
+        )}
+      </Tab.Screen>
       <Tab.Screen name="BirdScreens" options={{ tabBarLabel: "" }}>
         {() => (
           <Stack.Navigator>
@@ -144,24 +155,24 @@ const TabScreen = () => {
 };
 
 export default function App() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <NavigationContainer>
       <CartProvider>
-        {user ? (
-          <Stack.Navigator>
-            <Stack.Screen
-              name="root"
-              component={TabScreen}
-              options={{
-                header: (props) => <CustomHeader {...props} />,
-              }}
-            />
-            <Stack.Screen name="Cart" component={Cart} />
-          </Stack.Navigator>
-        ) : (
-          <Stack.Navigator>
+        {/* {user ? ( */}
+        <Stack.Navigator>
+          <Stack.Screen
+            name="root"
+            component={TabScreen}
+            options={{
+              header: (props) => <CustomHeader {...props} />,
+            }}
+          />
+          <Stack.Screen name="Cart" component={Cart} />
+        </Stack.Navigator>
+        {/* ) : ( */}
+        {/* <Stack.Navigator>
             <Stack.Screen
               name="SignIn"
               component={SignIn}
@@ -172,8 +183,8 @@ export default function App() {
               component={SignUp}
               options={{ tabBarLabel: "" }}
             />
-          </Stack.Navigator>
-        )}
+          </Stack.Navigator> */}
+        {/* )} */}
       </CartProvider>
     </NavigationContainer>
   );
