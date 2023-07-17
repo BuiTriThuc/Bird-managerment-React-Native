@@ -32,7 +32,7 @@ export default function Contact() {
         <Text style={{ fontWeight: "bold", fontSize: 25 }}>
           Văn phòng giao dịch
         </Text>
-        <AdressAPI />
+        {/* <AdressAPI /> */}
         <Text
           style={{
             textAlign: "center",

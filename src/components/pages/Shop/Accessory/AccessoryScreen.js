@@ -79,13 +79,6 @@ export default function AccessoryScreen({ navigation }) {
           </TouchableOpacity>
         ))}
       </View>
-
-      <TouchableOpacity
-        onPress={handleLogout}
-        className="p-4 bg-red-500 rounded-full"
-      >
-        <Text className="text-lg text-white font-bold text-center">Logout</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 }
