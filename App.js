@@ -155,12 +155,12 @@ const TabScreen = () => {
 };
 
 export default function App() {
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   return (
     <NavigationContainer>
       <CartProvider>
-        {/* {user ? ( */}
+        {user ? (
         <Stack.Navigator>
           <Stack.Screen
             name="root"
@@ -171,8 +171,8 @@ export default function App() {
           />
           <Stack.Screen name="Cart" component={Cart} />
         </Stack.Navigator>
-        {/* ) : ( */}
-        {/* <Stack.Navigator>
+        ) : (
+        <Stack.Navigator>
             <Stack.Screen
               name="SignIn"
               component={SignIn}
@@ -183,8 +183,8 @@ export default function App() {
               component={SignUp}
               options={{ tabBarLabel: "" }}
             />
-          </Stack.Navigator> */}
-        {/* )} */}
+          </Stack.Navigator>
+        )}
       </CartProvider>
     </NavigationContainer>
   );
