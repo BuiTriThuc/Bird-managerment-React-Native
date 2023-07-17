@@ -55,7 +55,7 @@ const FoodDetail = ({ navigation, route }) => {
               marginRight={7}
             />
             <Text>
-              Vận chuyển toàn quốc, miễn phí vận chuyển trong vòng bán kính 15km
+              Vận chuyển toàn quốc, miễn phí vận chuyển trong vòng bán kính 15km.
             </Text>
           </View>
           <View style={styles.backItem}>
