@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { LogBox, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { enableScreens } from "react-native-screens";
 import { Entypo } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
@@ -29,8 +29,11 @@ import {
 import Cart from "./src/components/pages/Cart";
 import { Header, Icon } from "react-native-elements";
 import { useContext } from "react";
+import Checkout from "./src/components/pages/Checkout";
+import Order from "./src/components/pages/Order";
 
 Entypo.loadFont();
+LogBox.ignoreAllLogs();
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -110,6 +113,16 @@ const TabScreen = () => {
             <Stack.Screen name="Bird" component={BirdScreen} />
             <Stack.Screen name="FoodDetail" component={FoodDetail} />
             <Stack.Screen name="AdressAPI" component={AdressAPI} />
+            <Stack.Screen
+              name="Checkout"
+              component={Checkout}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Order"
+              component={Order}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
         )}
       </Tab.Screen>
