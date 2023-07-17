@@ -1,45 +1,36 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import { Text, View, SafeAreaView, Image } from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 const exampleItems = [
   {
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
-    },
+    uri: "https://image-us.eva.vn/upload/4-2021/images/2021-10-01/image10-1633053501-233-width650height460.jpg",
   },
   {
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
-    },
+    uri: "https://afamilycdn.com/150157425591193600/2020/3/23/getty-eagle-58b9d5173df78c353c3a0644-15849024663381412188980.jpg",
   },
   {
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
-    },
+    uri: "https://petmaster.vn/petroom/wp-content/uploads/2021/11/402692526c14854adc05-min-e1638149914951.jpg",
   },
   {
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
-    },
-  },
-  {
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KNx9Cd9_zxKtZlHDv9b4frFFUADuXWns6g&usqp=CAU",
-    },
+    uri: "https://vuongquocloaivat.com/wp-content/uploads/2019/01/chim-ung-an_lg.jpg",
   },
 ];
 
-const FoodCarosel = () => {
+const FoodCarosel = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [carouselItems, setCarouselItems] = useState(exampleItems);
+  const [carouselItems, setCarouselItems] = useState([]);
   const ref = useRef(null);
 
-  const renderItem = useCallback(
-    ({ item, index }) => (
+  useEffect(() => {
+    setCarouselItems(data);
+  }, [data]);
+
+  const renderItem = ({ item, index }) => {
+    return (
       <View>
         <Image
-          source={item.image}
+          source={item}
           style={{
             backgroundColor: "floralwhite",
             borderRadius: 5,
@@ -50,9 +41,8 @@ const FoodCarosel = () => {
           }}
         />
       </View>
-    ),
-    []
-  );
+    );
+  };
 
   return (
     <SafeAreaView

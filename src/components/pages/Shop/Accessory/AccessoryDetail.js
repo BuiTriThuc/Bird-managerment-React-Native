@@ -27,13 +27,11 @@ const AccessoryDetail = ({ navigation, route }) => {
             onPress={() => navigation.navigate("BirdData")}
             style={styles.name}
           >
-            {product.name}{" "}
+            {product.name}
           </Text>
-          <AccessoryCarosel />
+          <AccessoryCarosel data={product.imageList} />
           <Image source={product.imageThuc} />
-
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
-
           <Text style={styles.price}>{product.price} VND</Text>
           <View style={styles.CountButton}>
             <Text style={{ fontSize: 15 }}>Số luợng:</Text>
@@ -42,7 +40,6 @@ const AccessoryDetail = ({ navigation, route }) => {
           <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
             <Text style={styles.buttonText}>Mua Ngay</Text>
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
             <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
           </TouchableOpacity>

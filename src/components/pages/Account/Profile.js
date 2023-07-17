@@ -80,7 +80,7 @@ const Profile = () => {
               }}
               source={require("../../../img/search.jpg")}
             />
-            <Text style={{ marginRight: 130 }}>Edit profile</Text>
+            <Text style={{ marginRight: 130 }}>Search item</Text>
             <AntDesign
               name="arrowright"
               size={20}
@@ -103,7 +103,7 @@ const Profile = () => {
               }}
               source={require("../../../img/settings.jpg")}
             />
-            <Text style={{ marginRight: 130 }}>Edit profile</Text>
+            <Text style={{ marginRight: 130 }}>Setting {"       "}</Text>
             <AntDesign
               name="arrowright"
               size={20}
@@ -132,7 +132,7 @@ const Profile = () => {
               }}
               source={require("../../../img/addfr.jpg")}
             />
-            <Text style={{ marginRight: 130 }}>Edit profile</Text>
+            <Text style={{ marginRight: 130 }}>Friends{"        "}</Text>
             <AntDesign
               name="arrowright"
               size={20}
@@ -156,7 +156,7 @@ const Profile = () => {
               }}
               source={require("../../../img/help.jpg")}
             />
-            <Text style={{ marginRight: 130 }}>Edit profile</Text>
+            <Text style={{ marginRight: 130 }}>Help{"             "}</Text>
             <AntDesign
               name="arrowright"
               size={20}

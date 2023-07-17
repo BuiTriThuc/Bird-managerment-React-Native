@@ -48,8 +48,15 @@ const CustomHeader = ({ navigation, scene }) => {
         centerComponent={{ text: "", style: { color: "#fff" } }}
         rightComponent={() => (
           <View className="flex-row">
-            <Icon name="shopping-cart" onPress={handleCartPress} />
-            <Text>{cartItems.length}</Text>
+            <Icon
+              color={"#F4B915"}
+              size={30}
+              name="shopping-cart"
+              onPress={handleCartPress}
+            />
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              {cartItems.length}
+            </Text>
           </View>
         )}
       />

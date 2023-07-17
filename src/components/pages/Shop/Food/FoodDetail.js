@@ -30,7 +30,7 @@ const FoodDetail = ({ navigation, route }) => {
           >
             {product.name}{" "}
           </Text>
-          <FoodCarosel />
+          <FoodCarosel data={product.imageList} />
           <Image source={product.imageThuc} />
 
           <Text style={styles.status}>Tình trạng: {product.status}</Text>

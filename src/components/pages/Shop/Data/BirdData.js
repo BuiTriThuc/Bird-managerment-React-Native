@@ -80,7 +80,7 @@ const BirdData = [
     price: "2.000.000",
     imageList: [
       {
-        uri: "https://demoda.vn/wp-content/uploads/2022/03/hinh-chim-hoa-mi-tuyet-dep.jpg",
+        uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcAN90Tpm-5-gizdoPIk-TtSOWTuP3Y1N8AA&usqp=CAU",
       },
       {
         uri: "https://img.kythuatnuoitrong.edu.vn/2018/03/15/nhung-dieu-can-biet-ve-chim-hoa-mi.jpg",
