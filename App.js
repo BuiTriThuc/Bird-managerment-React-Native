@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { LogBox, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { enableScreens } from "react-native-screens";
 import { Entypo } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
@@ -31,6 +31,7 @@ import { Header, Icon } from "react-native-elements";
 import { useContext } from "react";
 
 Entypo.loadFont();
+LogBox.ignoreAllLogs();
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -47,8 +48,15 @@ const CustomHeader = ({ navigation, scene }) => {
         centerComponent={{ text: "", style: { color: "#fff" } }}
         rightComponent={() => (
           <View className="flex-row">
-            <Icon name="shopping-cart" onPress={handleCartPress} />
-            <Text>{cartItems.length}</Text>
+            <Icon
+              color={"#F4B915"}
+              size={30}
+              name="shopping-cart"
+              onPress={handleCartPress}
+            />
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              {cartItems.length}
+            </Text>
           </View>
         )}
       />
@@ -112,6 +120,7 @@ const TabScreen = () => {
               options={{}}
             />
             <Stack.Screen name="Accessory" component={AccessoryScreen} />
+            <Stack.Screen name="AccessoryDetail" component={AccessoryDetail} />
             <Stack.Screen
               name="BirdDetail"
               component={BirdDetail}
