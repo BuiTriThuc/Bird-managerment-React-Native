@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   Image,
@@ -9,21 +9,58 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { FontAwesome } from "@expo/vector-icons";
 import Carousel from "react-native-snap-carousel";
 import BirdData from "./Shop/Data/BirdData";
 import FoodData from "./Shop/Data/FoodData";
 import AccessoryData from "./Shop/Data/AccessoryData";
+import NewsData from "./Shop/Data/NewsData";
+import NewsDetail from "./News/NewsDetail";
+import BirdDetail from "./Shop/Bird/BirdDetail";
 
 const { width } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const [currentTab, setCurrentTab] = useState("birds");
+  const carouselRef = useRef(null);
+  const [listFavourite, setListFavourite] = useState([]);
+  const [data, setData] = useState([]);
+  const navigation = useNavigation();
   const carouselData = [
     { image: require("../../img/carousel-1.jpg") },
     { image: require("../../img/carousel-2.jpg") },
     { image: require("../../img/carousel-3.jpg") },
   ];
+
+  useEffect(() => {
+    // Tạo một interval sử dụng setTimeout để tự động chuyển hình ảnh sau 3 giây
+    const interval = setInterval(() => {
+      // Kiểm tra xem carouselRef có tồn tại và có hàm "snapToNext" không
+      if (carouselRef.current && carouselRef.current.snapToNext) {
+        carouselRef.current.snapToNext(); // Chuyển đến hình ảnh tiếp theo trong Carousel
+      }
+    }, 3000); // Đợi 3 giây trước khi chuyển
+
+    return () => {
+      clearInterval(interval); // Xóa interval khi component bị huỷ
+    };
+  }, []);
+
+  const handleBirdPress = (product) => {
+    navigation.navigate("BirdDetail", { product });
+  };
+  const handleFoodPress = (product) => {
+    navigation.navigate("FoodDetail", { product });
+  };
+  const handleAccessoryPress = (product) => {
+    navigation.navigate("AccessoryDetail", { product });
+  };
+
+  const handleNewsDetailPress = (product) => {
+    navigation.navigate("NewsDetail", { product });
+  };
 
   const renderCarouselItem = ({ item }) => (
     <View style={styles.carouselItem}>
@@ -31,56 +68,64 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderBestSeller = ({ item }) => (
-    <View style={styles.bestSellerItem}>
+  const renderBirdSeller = ({ item }) => (
+    <TouchableOpacity
+      style={styles.bestSellerItem}
+      onPress={() => handleBirdPress(item)}
+    >
       <Image source={{ uri: item.image.uri }} style={styles.bestSellerImage} />
       <Text style={styles.bestSellerName}>{item.name}</Text>
       <View style={styles.productFooter}>
         <Text style={styles.bestSellerPrice}>{item.price}</Text>
         <Text style={styles.bestSellerStatus}>Bán chạy</Text>
       </View>
-    </View>
+    </TouchableOpacity>
+  );
+  const renderFoodSeller = ({ item }) => (
+    <TouchableOpacity
+      style={styles.bestSellerItem}
+      onPress={() => handleFoodPress(item)}
+    >
+      <Image source={{ uri: item.image.uri }} style={styles.bestSellerImage} />
+      <Text style={styles.bestSellerName}>{item.name}</Text>
+      <View style={styles.productFooter}>
+        <Text style={styles.bestSellerPrice}>{item.price}</Text>
+        <Text style={styles.bestSellerStatus}>Bán chạy</Text>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderAccessorySeller = ({ item }) => (
+    <TouchableOpacity
+      style={styles.bestSellerItem}
+      onPress={() => handleAccessoryPress(item)}
+    >
+      <Image source={{ uri: item.image.uri }} style={styles.bestSellerImage} />
+      <Text style={styles.bestSellerName}>{item.name}</Text>
+      <View style={styles.productFooter}>
+        <Text style={styles.bestSellerPrice}>{item.price}</Text>
+        <Text style={styles.bestSellerStatus}>Bán chạy</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   const birdRows = BirdData.slice(0, 4);
   const foodRows = FoodData.slice(0, 4);
   const AccessoryRows = AccessoryData.slice(0, 4);
+  const newsRows = data.slice(0, 2);
 
-  const NewsSection = () => {
-    return (
-      <View style={styles.newsContainer}>
-        <Text style={styles.newsTitle}>Tin tức</Text>
-        <View style={styles.newsItem}>
-          <FontAwesome name="phone" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Liên hệ</Text>
-            <Text style={styles.newsItemText}>0856597778 - 0856597778</Text>
-            <Text style={styles.newsItemText}>Email: contact@birdshop.com</Text>
-          </View>
-        </View>
-        <View style={styles.newsItem}>
-          <FontAwesome name="building" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Văn phòng giao dịch</Text>
-            <Text style={styles.newsItemText}>
-              Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành
-              phố Hồ Chí Minh
-            </Text>
-            <Text style={styles.newsItemText}>
-              Giờ làm việc: Thứ 2 - Thứ 6, 8:00 - 17:00
-            </Text>
-          </View>
-        </View>
-        <View style={styles.newsItem}>
-          <FontAwesome name="envelope" style={styles.newsIcon} />
-          <View style={styles.newsItemContent}>
-            <Text style={styles.newsItemTitle}>Bộ phận hỗ trợ khách hàng</Text>
-            <Text style={styles.newsItemText}>Buitrithuc1008@gmail.com</Text>
-          </View>
-        </View>
-      </View>
-    );
-  };
+  useFocusEffect(
+    React.useCallback(() => {
+      const updatedData = () => {
+        const updatedData = NewsData.map((item) => ({
+          ...item,
+          favorite: listFavourite.some((fav) => fav.id === item.id),
+        }));
+        setData(updatedData);
+      };
+
+      updatedData();
+    }, [listFavourite])
+  );
 
   return (
     <ScrollView>
@@ -90,10 +135,14 @@ const HomeScreen = () => {
         </View>
         <View>
           <Carousel
+            ref={carouselRef}
             data={carouselData}
             renderItem={renderCarouselItem}
             sliderWidth={width}
             itemWidth={width}
+            loop={true} // Thêm loop vào đây
+            autoplay={true} // Thêm autoplay vào đây để tự động chuyển ảnh
+            autoplayInterval={3000}
           />
         </View>
 
@@ -159,7 +208,7 @@ const HomeScreen = () => {
                 <View style={styles.gridContainer}>
                   {birdRows.map((item) => (
                     <View key={item.id} style={styles.gridItem}>
-                      {renderBestSeller({ item })}
+                      {renderBirdSeller({ item })}
                     </View>
                   ))}
                 </View>
@@ -171,7 +220,7 @@ const HomeScreen = () => {
                 <View style={styles.gridContainer}>
                   {foodRows.map((item) => (
                     <View key={item.id} style={styles.gridItem}>
-                      {renderBestSeller({ item })}
+                      {renderFoodSeller({ item })}
                     </View>
                   ))}
                 </View>
@@ -183,7 +232,7 @@ const HomeScreen = () => {
                 <View style={styles.gridContainer}>
                   {AccessoryRows.map((item) => (
                     <View key={item.id} style={styles.gridItem}>
-                      {renderBestSeller({ item })}
+                      {renderAccessorySeller({ item })}
                     </View>
                   ))}
                 </View>
@@ -191,8 +240,118 @@ const HomeScreen = () => {
             )}
           </View>
         </View>
-        <View style={styles.newsSection}>
-          <NewsSection />
+        <Text
+          style={{
+            textAlign: "center",
+            paddingVertical: 20,
+            fontSize: 18,
+            fontWeight: 600,
+          }}
+        >
+          Tin tức về loài chim
+        </Text>
+        <View style={{ backgroundColor: "#fff", paddingTop: 20 }}>
+          {newsRows.map((product) => (
+            <TouchableOpacity
+              onPress={() => handleNewsDetailPress(product)}
+              key={product.id}
+            >
+              <View style={{ alignItems: "center", marginBottom: 50 }}>
+                <Image style={styles.image} source={{ uri: product.img }} />
+                <View style={styles.newsItem}>
+                  <View style={{ alignItems: "center" }}>
+                    <Text style={styles.title}>{product.title}</Text>
+                    <Text
+                      style={{
+                        fontWeight: "300",
+                        fontSize: 15,
+                        marginTop: 20,
+                        textAlign: "justify",
+                        marginLeft: 10,
+                        marginRight: 10,
+                      }}
+                    >
+                      {product.des}
+                    </Text>
+                    <View style={{ flexDirection: "row", marginTop: 25 }}>
+                      <View style={{ flexDirection: "row", marginRight: 10 }}>
+                        <AntDesign
+                          name="clockcircle"
+                          size={20}
+                          color="#F9A529"
+                          style={{ marginRight: 5 }}
+                        />
+                        <Text>{product.time}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+          <TouchableOpacity onPress={() => navigation.navigate("News")}>
+            <Text
+              style={{
+                textAlign: "center",
+                paddingBottom: 20,
+                fontSize: 16,
+                color: "green",
+                textDecorationLine: "underline",
+              }}
+            >
+              Xem tất cả
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: "bold",
+            textAlign: "center",
+            paddingVertical: 20,
+          }}
+        >
+          Kết nối với chúng tôi
+        </Text>
+        <View>
+          <View style={styles.contactContainer}>
+            <View style={styles.contactItem}>
+              <FontAwesome name="phone" style={styles.contactIcon} />
+              <View style={styles.contactItemContent}>
+                <Text style={styles.contactItemTitle}>Liên hệ</Text>
+                <Text style={styles.contactItemText}>
+                  0856597778 - 0856597778
+                </Text>
+                <Text style={styles.contactItemText}>
+                  Email: contact@birdshop.com
+                </Text>
+              </View>
+            </View>
+            <View style={styles.contactItem}>
+              <FontAwesome name="building" style={styles.contactIcon} />
+              <View style={styles.contactItemContent}>
+                <Text style={styles.contactItemTitle}>Văn phòng giao dịch</Text>
+                <Text style={styles.contactItemText}>
+                  Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức,
+                  Thành phố Hồ Chí Minh
+                </Text>
+                <Text style={styles.contactItemText}>
+                  Giờ làm việc: Thứ 2 - Thứ 6, 8:00 - 17:00
+                </Text>
+              </View>
+            </View>
+            <View style={styles.contactItem}>
+              <FontAwesome name="envelope" style={styles.contactIcon} />
+              <View style={styles.contactItemContent}>
+                <Text style={styles.contactItemTitle}>
+                  Bộ phận hỗ trợ khách hàng
+                </Text>
+                <Text style={styles.contactItemText}>
+                  Buitrithuc1008@gmail.com
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -274,7 +433,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   activeButton: {
-    backgroundColor: "gray",
+    backgroundColor: "green",
   },
   buttonText: {
     fontSize: 16,
@@ -308,6 +467,30 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 600,
   },
+  contactContainer: {
+    backgroundColor: "#fff",
+    padding: 20,
+  },
+  contactItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  contactIcon: {
+    fontSize: 24,
+    marginRight: 10,
+    color: "green", // Màu biểu tượng
+  },
+  contactItemContent: {
+    flex: 1,
+  },
+  contactItemTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  contactItemText: {
+    fontSize: 14,
+  },
   newsContainer: {
     backgroundColor: "#fff",
     padding: 20,
@@ -326,7 +509,7 @@ const styles = StyleSheet.create({
   newsIcon: {
     fontSize: 24,
     marginRight: 10,
-    color: "green", // Màu biểu tượng
+    color: "green",
   },
   newsItemContent: {
     flex: 1,
@@ -335,8 +518,33 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  newsItemText: {
+  newsItemSummary: {
     fontSize: 14,
+  },
+  image: {
+    width: 350,
+    height: 250,
+    borderRadius: 10,
+    position: "absolute",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  newsItem: {
+    width: 300,
+    height: 200,
+    backgroundColor: "#ffffff",
+    position: "relative",
+    marginTop: 100,
+    borderRadius: 10,
+    shadowColor: "black",
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 3,
+    backgroundColor: "white",
   },
 });
 
