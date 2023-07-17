@@ -2,13 +2,25 @@ import { View, Text } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
 import { CheckCircleIcon } from "react-native-heroicons/outline";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
 
 export default function Order() {
   const { params } = useRoute();
-  let { cartItems } = params;
+  const navigation = useNavigation();
+  let {
+    cartItems,
+    email,
+    fullName,
+    phoneNumber,
+    provide,
+    disctrict,
+    ward,
+    address,
+  } = params;
+
+  console.log("check email", email);
 
   return (
     <ScrollView className="flex-1">
@@ -66,21 +78,21 @@ export default function Order() {
         <Text className="font-bold text-2xl text-gray-900">
           Thông tin mua hàng
         </Text>
-        <Text className="text-base text-gray-600">Nguyễn Trọng Tín</Text>
-        <Text className="text-base text-gray-600">tinmcit@gmail.com</Text>
-        <Text className="text-base text-gray-600">0858797595</Text>
+        <Text className="text-base text-gray-600">{fullName}</Text>
+        <Text className="text-base text-gray-600">{email}</Text>
+        <Text className="text-base text-gray-600">{phoneNumber}</Text>
       </View>
 
       <View className="mx-4 w-auto mt-5">
         <Text className="font-bold text-2xl text-gray-900">
           Địa chỉ nhận hàng
         </Text>
-        <Text className="text-base text-gray-600">Nguyễn Trọng Tín</Text>
-        <Text className="text-base text-gray-600">70 Nguyễn Thái Học</Text>
+        <Text className="text-base text-gray-600">{fullName}</Text>
+        <Text className="text-base text-gray-600">{address}</Text>
         <Text className="text-base text-gray-600">
-          Phường 2, quận 5, TP.HCM
+          {ward}, {disctrict}, {provide}
         </Text>
-        <Text className="text-base text-gray-600">0858797595</Text>
+        <Text className="text-base text-gray-600">{phoneNumber}</Text>
       </View>
 
       <View className="mx-4 w-auto mt-5">
@@ -99,7 +111,10 @@ export default function Order() {
         <Text className="text-base text-gray-600">Giao hàng tận nơi</Text>
       </View>
 
-      <TouchableOpacity className="p-4 w-auto mx-3 bg-blue-800 mt-4 rounded-2xl">
+      <TouchableOpacity
+        className="p-4 w-auto mx-3 bg-blue-800 mt-4 rounded-2xl"
+        onPress={() => navigation.navigate("Home")}
+      >
         <Text className="text-2xl text-white font-bold text-center">
           Tiếp tục mua hàng
         </Text>

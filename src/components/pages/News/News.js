@@ -56,14 +56,12 @@ const News = () => {
           News
         </Text>
         {data.map((product) => (
-          <View key={product.id}>
+          <TouchableOpacity onPress={() => handlePress(product)} key={product.id}>
             <View style={{ alignItems: "center", marginBottom: 50 }}>
               <Image style={styles.image} source={{ uri: product.img }} />
               <View style={styles.newsItem}>
                 <View style={{ alignItems: "center" }}>
-                  <TouchableOpacity onPress={() => handlePress(product)}>
                     <Text style={styles.title}>{product.title}</Text>
-                  </TouchableOpacity>
                   <Text
                     style={{
                       fontWeight: "300",
@@ -94,7 +92,7 @@ const News = () => {
                 </View>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>

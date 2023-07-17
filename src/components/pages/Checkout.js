@@ -13,8 +13,12 @@ export default function Checkout() {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [provides, setProvides] = useState([]);
+  const [provide, setProvide] = useState("");
+  const [disctrict, setDistrict] = useState("");
+  const [ward, setWard] = useState("");
   const [disctricts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
   const { params } = useRoute();
@@ -48,6 +52,7 @@ export default function Checkout() {
       try {
         const data = await getDistrict(selectedProvide.code);
         setDistricts(data.districts);
+        setProvide(selectedProvide.name);
       } catch (error) {
         console.log(error);
       }
@@ -62,6 +67,7 @@ export default function Checkout() {
       try {
         const data = await getWard(selectedDistrict.code);
         setWards(data.wards);
+        setDistrict(selectedDistrict.name);
       } catch (error) {
         console.log(error);
       }
@@ -154,7 +160,7 @@ export default function Checkout() {
           buttonTextStyle={{ fontSize: 16, lineHeight: 24, color: "black" }}
           data={wards?.map((war) => war.name)}
           onSelect={(selectedItem, index) => {
-            console.log(selectedItem, index);
+            setWard(selectedItem);
           }}
           buttonTextAfterSelection={(selectedItem, index) => {
             // text represented after item is selected
@@ -171,6 +177,8 @@ export default function Checkout() {
         <TextInput
           placeholder="Địa chỉ"
           className="p-4 my-3 w-full border border-gray-400 rounded-full text-base text-black"
+          onChangeText={(text) => setAddress(text)}
+          value={address}
         />
       </View>
 
@@ -200,7 +208,18 @@ export default function Checkout() {
 
       <TouchableOpacity
         className="p-4 bg-blue-800 mx-2 w-auto"
-        onPress={() => navigation.navigate("Order", { cartItems })}
+        onPress={() =>
+          navigation.navigate("Order", {
+            cartItems,
+            email,
+            fullName,
+            phoneNumber,
+            provide,
+            disctrict,
+            ward,
+            address,
+          })
+        }
       >
         <Text className="text-lg text-white font-bold text-center">
           Đặt hàng

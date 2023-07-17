@@ -50,8 +50,15 @@ const CustomHeader = ({ navigation, scene }) => {
         centerComponent={{ text: "", style: { color: "#fff" } }}
         rightComponent={() => (
           <View className="flex-row">
-            <Icon name="shopping-cart" onPress={handleCartPress} />
-            <Text>{cartItems.length}</Text>
+            <Icon
+              color={"#F4B915"}
+              size={30}
+              name="shopping-cart"
+              onPress={handleCartPress}
+            />
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              {cartItems.length}
+            </Text>
           </View>
         )}
       />
@@ -94,7 +101,18 @@ const TabScreen = () => {
         },
       })}
     >
-      <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: "" }} />
+      <Tab.Screen name="Home" options={{ tabBarLabel: "" }}>
+        {() => (
+          <Stack.Navigator>
+            <Stack.Screen name="Homes" component={Home} />
+            <Stack.Screen name="BirdDetail" component={BirdDetail} />
+            <Stack.Screen name="FoodDetail" component={FoodDetail} />
+            <Stack.Screen name="AccessoryDetail" component={AccessoryDetail} />
+            <Stack.Screen name="NewsDetail" component={NewsDetail} />
+            <Stack.Screen name="News" component={News} />
+          </Stack.Navigator>
+        )}
+      </Tab.Screen>
       <Tab.Screen name="BirdScreens" options={{ tabBarLabel: "" }}>
         {() => (
           <Stack.Navigator>
@@ -104,6 +122,7 @@ const TabScreen = () => {
               options={{}}
             />
             <Stack.Screen name="Accessory" component={AccessoryScreen} />
+            <Stack.Screen name="AccessoryDetail" component={AccessoryDetail} />
             <Stack.Screen
               name="BirdDetail"
               component={BirdDetail}
@@ -163,18 +182,18 @@ export default function App() {
     <NavigationContainer>
       <CartProvider>
         {user ? (
-          <Stack.Navigator>
-            <Stack.Screen
-              name="root"
-              component={TabScreen}
-              options={{
-                header: (props) => <CustomHeader {...props} />,
-              }}
-            />
-            <Stack.Screen name="Cart" component={Cart} />
-          </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="root"
+            component={TabScreen}
+            options={{
+              header: (props) => <CustomHeader {...props} />,
+            }}
+          />
+          <Stack.Screen name="Cart" component={Cart} />
+        </Stack.Navigator>
         ) : (
-          <Stack.Navigator>
+        <Stack.Navigator>
             <Stack.Screen
               name="SignIn"
               component={SignIn}
