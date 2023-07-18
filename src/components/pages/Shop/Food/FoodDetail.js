@@ -11,6 +11,10 @@ import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import FoodDetailSuggest from "./FoodDetailSuggest";
 import FoodCarosel from "./FoodCarosel";
 import CountButton from "../../Shop/CountButton";
+import { useContext } from "react";
+import { CartContext } from "../../../provider/CartProvider";
+import { useState } from "react";
+import ProductButton from "../../../ProductButton";
 
 const FoodDetail = ({ navigation, route }) => {
   let { product } = route.params;
@@ -36,17 +40,7 @@ const FoodDetail = ({ navigation, route }) => {
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
 
           <Text style={styles.price}>{product.price} VND</Text>
-          <View style={styles.CountButton}>
-            <Text style={{ fontSize: 15 }}>Số luợng:</Text>
-            <CountButton style={styles.Count} />
-          </View>
-          <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
-            <Text style={styles.buttonText}>Mua Ngay</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
-            <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
-          </TouchableOpacity>
+          <ProductButton navigation={navigation} product={product} />
           <View style={styles.ship}>
             <FontAwesome
               name="car-side"
@@ -55,7 +49,7 @@ const FoodDetail = ({ navigation, route }) => {
               marginRight={7}
             />
             <Text>
-              Vận chuyển toàn quốc, miễn phí vận chuyển trong vòng bán kính 15km.
+              Vận chuyển toàn quốc, miễn phí vận chuyển trong vòng bán kính 15km
             </Text>
           </View>
           <View style={styles.backItem}>
