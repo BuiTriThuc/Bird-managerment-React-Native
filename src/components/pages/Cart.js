@@ -17,7 +17,7 @@ const Cart = () => {
     navigation.navigate("BirdDetail", { product: item });
   };
   const handlePressBuy = () => {
-    navigation.navigate("BirdScreen");
+    navigation.navigate("Home");
   };
 
   const renderItem = ({ item }) => {
@@ -133,6 +133,7 @@ const Cart = () => {
                   justifyContent: "center",
                   marginVertical: 10,
                 }}
+                onPress={handlePressBuy}
               >
                 <Text style={{ fontSize: 25 }}>Tiếp tục mua hàng</Text>
               </TouchableOpacity>
@@ -159,7 +160,7 @@ const Cart = () => {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                onPress={() => handlePressBuy()}
+                onPress={handlePressBuy}
               >
                 <Text style={{ fontSize: 25 }}>Mua sắm</Text>
               </TouchableOpacity>
