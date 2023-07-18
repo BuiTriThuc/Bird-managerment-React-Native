@@ -132,16 +132,6 @@ const TabScreen = () => {
             <Stack.Screen name="Bird" component={BirdScreen} />
             <Stack.Screen name="FoodDetail" component={FoodDetail} />
             <Stack.Screen name="AdressAPI" component={AdressAPI} />
-            <Stack.Screen
-              name="Checkout"
-              component={Checkout}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Order"
-              component={Order}
-              options={{ headerShown: false }}
-            />
           </Stack.Navigator>
         )}
       </Tab.Screen>
@@ -182,18 +172,20 @@ export default function App() {
     <NavigationContainer>
       <CartProvider>
         {user ? (
-        <Stack.Navigator>
-          <Stack.Screen
-            name="root"
-            component={TabScreen}
-            options={{
-              header: (props) => <CustomHeader {...props} />,
-            }}
-          />
-          <Stack.Screen name="Cart" component={Cart} />
-        </Stack.Navigator>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="root"
+              component={TabScreen}
+              options={{
+                header: (props) => <CustomHeader {...props} />,
+              }}
+            />
+            <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Checkout" component={Checkout} />
+            <Stack.Screen name="Order" component={Order} />
+          </Stack.Navigator>
         ) : (
-        <Stack.Navigator>
+          <Stack.Navigator>
             <Stack.Screen
               name="SignIn"
               component={SignIn}
