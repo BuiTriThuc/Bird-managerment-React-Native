@@ -12,11 +12,11 @@ import BirdDetailSuggest from "./BirdDetailSuggest";
 import CountButton from "../../Shop/CountButton";
 import BirdCarousel from "./BirdCarosel";
 import { CartContext } from "../../../provider/CartProvider";
+import ProductButton from "../../../ProductButton";
 
 const BirdDetail = ({ navigation, route }) => {
   let { product } = route.params;
-  const { addToCart } = useContext(CartContext)
-  const [quantity, setQuantity] = useState(1)
+
   const clearAsyncStorage = async () => {
     AsyncStorage.clear();
   };
@@ -35,22 +35,7 @@ const BirdDetail = ({ navigation, route }) => {
           <BirdCarousel data={product.imageList} />
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
           <Text style={styles.price}>{product.price} VND</Text>
-          <View style={styles.CountButton}>
-            <Text style={{ fontSize: 15 }}>Số luợng:</Text>
-            <CountButton style={styles.Count} onChange={(value) => setQuantity(value)} />
-          </View>
-          <TouchableOpacity style={styles.buttonBuy} onPress={() => { navigation.navigate("Cart"); addToCart({ ...product, quantity }) }}>
-            <Text style={styles.buttonText}>
-              <FontAwesome name="opencart" size={22} color="white" /> Mua Ngay
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.buttonAddCart} onPress={() => { addToCart({ ...product, quantity }) }}>
-            <Text style={styles.buttonText}>
-              <FontAwesome name="cart-plus" size={22} color="white" /> Thêm vào
-              giỏ hàng
-            </Text>
-          </TouchableOpacity>
+          <ProductButton navigation={navigation} product={product} />
           <View style={styles.ship}>
             <FontAwesome
               name="car-side"

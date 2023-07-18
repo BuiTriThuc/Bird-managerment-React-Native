@@ -10,19 +10,17 @@ const CountButton = ({ onChange }) => {
   const minusValue = () => {
     if (value > 0 && !(value - 1 === 0)) {
       setValue(value - 1);
-      onChange(value - 1)
+      onChange(value - 1);
     } else {
       setValue(1);
-      onChange(1)
+      onChange(1);
     }
   };
 
   const plusValue = () => {
     setValue(value + 1);
-    onChange(value + 1)
+    onChange(value + 1);
   };
-
-
 
   return (
     <View style={styles.container}>

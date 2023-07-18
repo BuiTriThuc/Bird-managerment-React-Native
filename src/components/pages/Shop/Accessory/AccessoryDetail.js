@@ -11,9 +11,13 @@ import FontAwesome from "@expo/vector-icons/FontAwesome5";
 import CountButton from "../../Shop/CountButton";
 import AccessoryCarosel from "./AccessoryCarosel";
 import AccessorySuggest from "./AccessorySuggest";
+import { useContext } from "react";
+import { CartContext } from "../../../provider/CartProvider";
+import ProductButton from "../../../ProductButton";
 
 const AccessoryDetail = ({ navigation, route }) => {
   let { product } = route.params;
+  const { addToCart } = useContext(CartContext);
 
   const clearAsyncStorage = async () => {
     AsyncStorage.clear();
@@ -27,22 +31,17 @@ const AccessoryDetail = ({ navigation, route }) => {
             onPress={() => navigation.navigate("BirdData")}
             style={styles.name}
           >
-            {product.name}
+            {product.name}{" "}
           </Text>
           <AccessoryCarosel data={product.imageList} />
+
           <Image source={product.imageThuc} />
+
           <Text style={styles.status}>Tình trạng: {product.status}</Text>
+
           <Text style={styles.price}>{product.price} VND</Text>
-          <View style={styles.CountButton}>
-            <Text style={{ fontSize: 15 }}>Số luợng:</Text>
-            <CountButton style={styles.Count} />
-          </View>
-          <TouchableOpacity style={styles.buttonBuy} onPress={() => {}}>
-            <Text style={styles.buttonText}>Mua Ngay</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonAddCart} onPress={() => {}}>
-            <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
-          </TouchableOpacity>
+          <ProductButton navigation={navigation} product={product} />
+
           <View style={styles.ship}>
             <FontAwesome
               name="car-side"
