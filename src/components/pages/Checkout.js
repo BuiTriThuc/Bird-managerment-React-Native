@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ScrollView } from "react-native";
 import { TextInput } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
@@ -9,6 +9,7 @@ import { getDistrict, getProvide, getWard } from "../../../api";
 import useAuth from "../hooks/useAuth";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { isValidEmail, isValidPhoneNumber } from "../utils/validation";
+import { CartContext } from "../provider/CartProvider";
 
 export default function Checkout() {
   const [email, setEmail] = useState("");
@@ -34,9 +35,7 @@ export default function Checkout() {
 
   const { params } = useRoute();
   const navigation = useNavigation();
-  let { cartItems } = params;
-
-  console.log("Check cart items", cartItems);
+  const { clearCart, cartItems } = useContext(CartContext);
 
   const handleChecked = () => {
     setIsChecked(!isChecked);
@@ -161,6 +160,7 @@ export default function Checkout() {
         ward,
         address,
       });
+      clearCart();
     }
   };
 

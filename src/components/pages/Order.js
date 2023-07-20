@@ -17,7 +17,7 @@ export default function Order() {
     fullName,
     phoneNumber,
     provide,
-    disctrict,
+    district,
     ward,
     address,
   } = params;
@@ -116,7 +116,7 @@ export default function Order() {
         <Text className="text-base text-gray-600">{fullName}</Text>
         <Text className="text-base text-gray-600">{address}</Text>
         <Text className="text-base text-gray-600">
-          {ward}, {disctrict}, {provide}
+          {ward}, {district}, {provide}
         </Text>
         <Text className="text-base text-gray-600">{phoneNumber}</Text>
       </View>
